@@ -40,6 +40,7 @@ import org.jfree.chart.TestUtils;
 
 import org.junit.jupiter.api.Test;
 
+import static org.jfree.chart.TestUtils.serialised;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -86,8 +87,78 @@ public class FlowKeyTest {
     @Test
     public void testSerialization() {
         FlowKey<String> k1 = new FlowKey<>(1, "S1", "D1");
-        FlowKey<String> k2 = TestUtils.serialised(k1);
+        FlowKey<String> k2 = serialised(k1);
         assertEquals(k1, k2);
+    }
+
+    //KItest
+    @Test
+    public void testEqualsTwo() {
+        FlowKey<String> key1 = new FlowKey<>(1, "sourceA", "destinationA");
+        FlowKey<String> key2 = new FlowKey<>(1, "sourceA", "destinationA");
+        FlowKey<String> key3 = new FlowKey<>(2, "sourceB", "destinationB");
+
+        // Teste, ob zwei identische Objekte als gleich erkannt werden
+        assertEquals(key1, key2);
+
+        // Teste, ob Objekte mit unterschiedlichen Feldern als ungleich erkannt werden
+        assertNotEquals(key1, key3);
+
+        // Teste, ob ein Objekt ungleich null ist
+        assertNotEquals(key1, null);
+
+        // Teste, ob ein Objekt ungleich einem Objekt eines anderen Typs ist
+        assertNotEquals(key1, "ein anderer Typ");
+    }
+
+    @Test
+    public void testCloningTwo() throws CloneNotSupportedException {
+        FlowKey<String> original = new FlowKey<>(1, "sourceA", "destinationA");
+        FlowKey<String> clone = (FlowKey<String>) original.clone();
+
+        // Teste, ob das geklonte Objekt eine andere Instanz ist
+        assertNotSame(original, clone);
+
+        // Teste, ob das geklonte Objekt dieselben Eigenschaften wie das Original aufweist
+        assertEquals(original, clone);
+    }
+
+    @Test
+    public void testSerializationTwo() {
+        FlowKey<String> original = new FlowKey<>(1, "sourceA", "destinationA");
+        FlowKey<String> deserialized = serialised(original);
+
+        // Teste, ob das deserialisierte Objekt dem ursprünglichen Objekt entspricht
+        assertEquals(original, deserialized);
+    }
+
+    //Mini
+    @Test
+    public void testEqualsTwoMini() {
+        FlowKey<String> key1 = new FlowKey<>(1, "source1", "dest1");
+        FlowKey<String> key2 = new FlowKey<>(1, "source1", "dest1");
+        FlowKey<String> key3 = new FlowKey<>(2, "source2", "dest2");
+
+        assertTrue(key1.equals(key2), "Keys with same fields should be equal");
+        assertFalse(key1.equals(key3), "Keys with different fields should not be equal");
+        assertFalse(key1.equals(null), "Key should not be equal to null");
+        assertFalse(key1.equals("Some String"), "Key should not be equal to an object of a different type");
+    }
+    @Test
+    public void testCloningTwoMini() throws CloneNotSupportedException {
+        FlowKey<String> original = new FlowKey<>(1, "source1", "dest1");
+        FlowKey<String> cloned = (FlowKey<String>) original.clone();
+
+        assertNotSame(original, cloned, "Cloned object should not be the same instance as the original");
+        assertEquals(original, cloned, "Cloned object should have same properties as the original");
+    }
+    @Test
+    public void testSerializationTwoMini() {
+        FlowKey<String> original = new FlowKey<>(1, "source1", "dest1");
+        FlowKey<String> deserialized = TestUtils.serialised(original);
+
+        assertNotSame(original, deserialized, "Deserialized object should not be the same instance as the original");
+        assertEquals(original, deserialized, "Deserialized object should be equal to the original");
     }
 
 }
