@@ -39,6 +39,8 @@ package org.jfree.data;
 import org.jfree.chart.TestUtils;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -348,4 +350,316 @@ public class RangeTest {
         assertFalse(new Range(Double.NaN, 2.0).isNaNRange());
         assertFalse(new Range(1.0, Double.NaN).isNaNRange());
     }
+
+
+    //KItest
+    @Test
+    public void testConstructorTwo() {
+        // Test, dass der Konstruktor korrekt initialisiert
+        Range range = new Range(0.0, 10.0);
+        assertEquals(0.0, range.getLowerBound());
+        assertEquals(10.0, range.getUpperBound());
+
+        // Test, dass eine Ausnahme bei ungültiger Reihenfolge geworfen wird
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Range(10.0, 0.0);
+        });
+    }
+
+    @Test
+    public void testEqualsTwo() {
+        Range range1 = new Range(0.0, 10.0);
+        Range range2 = new Range(0.0, 10.0);
+        Range range3 = new Range(5.0, 15.0);
+
+        assertEquals(range1, range2);
+        assertNotEquals(range1, range3);
+        assertNotEquals(range1, "Not a Range");
+    }
+
+    @Test
+    public void testHashCodeTwo() {
+        Range range1 = new Range(0.0, 10.0);
+        Range range2 = new Range(0.0, 10.0);
+        assertEquals(range1.hashCode(), range2.hashCode());
+    }
+
+    @Test
+    public void testContainsTwo() {
+        Range range = new Range(0.0, 10.0);
+        assertTrue(range.contains(5.0));
+        assertFalse(range.contains(-1.0));
+        assertFalse(range.contains(15.0));
+    }
+
+    @Test
+    public void testConstrainTwo() {
+        Range range = new Range(0.0, 10.0);
+        assertEquals(5.0, range.constrain(5.0));
+        assertEquals(10.0, range.constrain(15.0));
+        assertEquals(0.0, range.constrain(-1.0));
+    }
+
+    @Test
+    public void testIntersectsThree() {
+        Range range1 = new Range(0.0, 10.0);
+        Range range2 = new Range(5.0, 15.0);
+        Range range3 = new Range(10.0, 20.0);
+        Range range4 = new Range(15.0, 25.0);
+
+        assertTrue(range1.intersects(range2));  // Diese Bereiche überschneiden sich
+        assertFalse(range1.intersects(range3)); // Anpassung: Keine Überschneidung, wenn die Ränder nur berühren sollten
+        assertFalse(range1.intersects(range4)); // Keine Überschneidung
+    }
+
+    @Test
+    public void testExpandTwo() {
+        Range range = new Range(0.0, 10.0);
+        Range expandedRange = Range.expand(range, 0.1, 0.1);
+        assertEquals(-1.0, expandedRange.getLowerBound());
+        assertEquals(11.0, expandedRange.getUpperBound());
+    }
+
+    @Test
+    public void testShiftTwo() {
+        Range range = new Range(0.0, 10.0);
+        Range shiftedRange = Range.shift(range, 5.0);
+        assertEquals(5.0, shiftedRange.getLowerBound());
+        assertEquals(15.0, shiftedRange.getUpperBound());
+    }
+
+    @Test
+    public void testScaleTwo() {
+        Range range = new Range(0.0, 10.0);
+        Range scaledRange = Range.scale(range, 2.0);
+        assertEquals(0.0, scaledRange.getLowerBound());
+        assertEquals(20.0, scaledRange.getUpperBound());
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Range.scale(range, -1.0);
+        });
+    }
+
+    @Test
+    public void testSerializationTwo() {
+        try {
+            Range range = new Range(0.0, 10.0);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(range);
+            oos.close();
+
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            Range deserializedRange = (Range) ois.readObject();
+            ois.close();
+
+            assertEquals(range, deserializedRange);
+        } catch (IOException | ClassNotFoundException e) {
+            fail("Exception thrown during serialization/deserialization: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public void testCombineTwo() {
+        Range range1 = new Range(0.0, 10.0);
+        Range range2 = new Range(5.0, 15.0);
+        Range combinedRange = Range.combine(range1, range2);
+
+        assertEquals(0.0, combinedRange.getLowerBound());
+        assertEquals(15.0, combinedRange.getUpperBound());
+    }
+
+    @Test
+    public void testCombineIgnoringNaNTwo() {
+        Range range1 = new Range(0.0, Double.NaN);
+        Range range2 = new Range(Double.NaN, 15.0);
+        Range combinedRange = Range.combineIgnoringNaN(range1, range2);
+
+        assertEquals(0.0, combinedRange.getLowerBound());
+        assertEquals(15.0, combinedRange.getUpperBound());
+    }
+
+    @Test
+    public void testIsNaNRangeTwo() {
+        Range range1 = new Range(Double.NaN, Double.NaN);
+        Range range2 = new Range(0.0, Double.NaN);
+        Range range3 = new Range(Double.NaN, 10.0);
+
+        assertTrue(range1.isNaNRange());
+        assertFalse(range2.isNaNRange());
+        assertFalse(range3.isNaNRange());
+    }
+
+//Mini
+// Test für den Konstruktor
+@Test
+void testConstructorTwoMini() {
+    // Gültige Eingabewerte
+    Range range = new Range(1.0, 5.0);
+    assertEquals(1.0, range.getLowerBound());
+    assertEquals(5.0, range.getUpperBound());
+
+    // Ungültige Eingabewerte
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+        new Range(5.0, 1.0);
+    });
+    assertEquals("Range(double, double): require lower (5.0) <= upper (1.0).", exception.getMessage());
+}
+
+    // Test für die equals-Methode
+    @Test
+    void testEqualsTwoMini() {
+        Range range1 = new Range(1.0, 5.0);
+        Range range2 = new Range(1.0, 5.0);
+        Range range3 = new Range(2.0, 6.0);
+
+        assertEquals(range1, range2); // gleiche Werte
+        assertNotEquals(range1, range3); // unterschiedliche Werte
+        assertNotEquals(range1, null); // null sollte ungleich sein
+        assertNotEquals(range1, "Not a Range"); // anderer Typ
+    }
+
+    // Test für die hashCode-Methode
+    @Test
+    void testHashCodeTwoMini() {
+        Range range1 = new Range(1.0, 5.0);
+        Range range2 = new Range(1.0, 5.0);
+
+        assertEquals(range1.hashCode(), range2.hashCode()); // gleiche Objekte, gleicher Hashcode
+    }
+
+    // Test für die contains-Methode
+    @Test
+    void testContainsTwoMini() {
+        Range range = new Range(1.0, 5.0);
+        assertTrue(range.contains(1.0));
+        assertTrue(range.contains(3.0));
+        assertTrue(range.contains(5.0));
+        assertFalse(range.contains(0.0));
+        assertFalse(range.contains(6.0));
+    }
+
+    // Test für die constrain-Methode
+    @Test
+    void testConstrainTwoMini() {
+        Range range = new Range(1.0, 5.0);
+        assertEquals(3.0, range.constrain(3.0));
+        assertEquals(1.0, range.constrain(0.0)); // unterer Grenzwert
+        assertEquals(5.0, range.constrain(6.0)); // oberer Grenzwert
+        assertEquals(Double.NaN, range.constrain(Double.NaN)); // NaN sollte NaN zurückgeben
+    }
+
+    // Test für die intersects-Methode
+    @Test
+    void testIntersectsTwoMini() {
+        Range range1 = new Range(1.0, 5.0);
+        Range range2 = new Range(4.0, 6.0);
+        Range range3 = new Range(6.0, 8.0);
+
+        assertTrue(range1.intersects(range2)); // überlappen
+        assertFalse(range1.intersects(range3)); // keine Überlappung
+    }
+
+    // Test für die expand-Methode
+    @Test
+    void testExpandThreeMini() {
+        Range range = new Range(1.0, 5.0);
+
+        // Länge des Bereichs: 5.0 - 1.0 = 4.0
+        // Untere Grenze nach Erweiterung um 10%: 1.0 - (0.1 * 4.0) = 1.0 - 0.4 = 0.6
+        // Obere Grenze nach Erweiterung um 20%: 5.0 + (0.2 * 4.0) = 5.0 + 0.8 = 5.8
+        Range expandedRange = Range.expand(range, 0.1, 0.2);
+        assertEquals(0.6, expandedRange.getLowerBound(), 0.0001); // Erwartet: 0.6
+        assertEquals(5.8, expandedRange.getUpperBound(), 0.0001); // Erwartet: 5.8
+
+        // Überprüfung eines ungültigen Bereichs
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Range(2.0, 1.0); // Dies ist ein ungültiger Bereich
+        });
+
+        // Test mit einem anderen gültigen Range
+        Range validRange = new Range(2.0, 3.0);
+        // Die Länge beträgt hier 1.0, denn 3.0 - 2.0 = 1.0
+        // Untere Grenze nach Erweiterung um 10%: 2.0 - (0.1 * 1.0) = 2.0 - 0.1 = 1.9
+        // Obere Grenze nach Erweiterung um 20%: 3.0 + (0.2 * 1.0) = 3.0 + 0.2 = 3.2
+        Range expandedValidRange = Range.expand(validRange, 0.1, 0.2);
+        assertEquals(1.9, expandedValidRange.getLowerBound(), 0.0001); // Erwartet: 1.9
+        assertEquals(3.2, expandedValidRange.getUpperBound(), 0.0001); // Erwartet: 3.2
+    }
+
+    // Test für die shift-Methode
+    @Test
+    void testShiftTwoMini() {
+        Range range = new Range(1.0, 5.0);
+        Range shiftedRange = Range.shift(range, 2.0);
+
+        assertEquals(3.0, shiftedRange.getLowerBound());
+        assertEquals(7.0, shiftedRange.getUpperBound());
+    }
+
+    // Test für die scale-Methode
+    @Test
+    void testScaleTwoMini() {
+        Range range = new Range(1.0, 5.0);
+        Range scaledRange = Range.scale(range, 2.0);
+
+        assertEquals(2.0, scaledRange.getLowerBound());
+        assertEquals(10.0, scaledRange.getUpperBound());
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Range.scale(range, -1.0);
+        });
+    }
+
+    // Test für die Serialization
+    @Test
+    void testSerializationTwoMini() {
+        Range originalRange = new Range(1.0, 5.0);
+        Range deserializedRange = TestUtils.serialised(originalRange);
+
+        assertEquals(originalRange, deserializedRange);
+    }
+
+
+    @Test
+    void testCombineTwoRangesThreeMini() {
+        Range range1 = new Range(1.0, 5.0);
+        Range range2 = new Range(3.0, 6.0);
+
+        Range combinedRange = Range.combine(range1, range2);
+
+        assertEquals(1.0, combinedRange.getLowerBound());
+        assertEquals(6.0, combinedRange.getUpperBound());
+
+        // Tests für null-Werte
+        assertSame(range1, Range.combine(range1, null)); // range1 sollte zurückgegeben werden
+        assertSame(range2, Range.combine(null, range2)); // range2 sollte zurückgegeben werden
+        assertNull(Range.combine(null, null)); // null sollte zurückgegeben werden, wenn beide null sind
+    }
+
+    // Test für die combineIgnoringNaN-Methode
+    @Test
+    void testCombineIgnoringNaNTwoMini() {
+        Range range1 = new Range(Double.NaN, Double.NaN);
+        Range range2 = new Range(3.0, 6.0);
+
+        Range combinedRange = Range.combineIgnoringNaN(range1, range2);
+        assertEquals(range2, combinedRange);
+
+        combinedRange = Range.combineIgnoringNaN(null, range2);
+        assertEquals(range2, combinedRange);
+    }
+
+    // Test für die isNaNRange-Methode
+    @Test
+    void testIsNaNRangeTwoMini() {
+        Range range1 = new Range(Double.NaN, Double.NaN);
+        Range range2 = new Range(1.0, 5.0);
+
+        assertTrue(range1.isNaNRange());
+        assertFalse(range2.isNaNRange());
+    }
+
+
 }
