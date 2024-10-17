@@ -49,90 +49,90 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class PolynomialFunction2DTest {
 
-    /**
-     * Some tests for the constructor.
-     */
-    @Test
-    public void testConstructor() {
-        PolynomialFunction2D f = new PolynomialFunction2D(new double[] {1.0,
-                2.0});
-        assertArrayEquals(new double[]{1.0, 2.0}, f.getCoefficients());
-
-        boolean pass = false;
-        try {
-            f = new PolynomialFunction2D(null);
-        }
-        catch (IllegalArgumentException e) {
-            pass = true;
-        }
-        assertTrue(pass);
-    }
-
-    /**
-     * Some checks for the getCoefficients() method.
-     */
-    @Test
-    public void testGetCoefficients() {
-        PolynomialFunction2D f = new PolynomialFunction2D(new double[] {1.0,
-                2.0});
-        double[] c = f.getCoefficients();
-        assertArrayEquals(new double[]{1.0, 2.0}, c);
-
-        // make sure that modifying the returned array doesn't change the
-        // function
-        c[0] = 99.9;
-        assertArrayEquals(new double[]{1.0, 2.0}, f.getCoefficients());
-    }
-
-    /**
-     * Some checks for the getOrder() method.
-     */
-    @Test
-    public void testGetOrder() {
-        PolynomialFunction2D f = new PolynomialFunction2D(new double[] {1.0,
-                2.0});
-        assertEquals(1, f.getOrder());
-    }
-
-    /**
-     * For datasets, the equals() method just checks keys and values.
-     */
-    @Test
-    public void testEquals() {
-        PolynomialFunction2D f1 = new PolynomialFunction2D(new double[] {1.0,
-                2.0});
-        PolynomialFunction2D f2 = new PolynomialFunction2D(new double[] {1.0,
-                2.0});
-        assertEquals(f1, f2);
-        f1 = new PolynomialFunction2D(new double[] {2.0, 3.0});
-        assertNotEquals(f1, f2);
-        f2 = new PolynomialFunction2D(new double[] {2.0, 3.0});
-        assertEquals(f1, f2);
-    }
-
-    /**
-     * Serialize an instance, restore it, and check for equality.
-     */
-    @Test
-    public void testSerialization() {
-        PolynomialFunction2D f1 = new PolynomialFunction2D(new double[] {1.0,
-                2.0});
-        PolynomialFunction2D f2 = TestUtils.serialised(f1);
-        assertEquals(f1, f2);
-    }
-
-    /**
-     * Objects that are equal should have the same hash code otherwise FindBugs
-     * will tell on us...
-     */
-    @Test
-    public void testHashCode() {
-        PolynomialFunction2D f1 = new PolynomialFunction2D(new double[] {1.0,
-                2.0});
-        PolynomialFunction2D f2 = new PolynomialFunction2D(new double[] {1.0,
-                2.0});
-        assertEquals(f1.hashCode(), f2.hashCode());
-    }
+//    /**
+//     * Some tests for the constructor.
+//     */
+//    @Test
+//    public void testConstructor() {
+//        PolynomialFunction2D f = new PolynomialFunction2D(new double[] {1.0,
+//                2.0});
+//        assertArrayEquals(new double[]{1.0, 2.0}, f.getCoefficients());
+//
+//        boolean pass = false;
+//        try {
+//            f = new PolynomialFunction2D(null);
+//        }
+//        catch (IllegalArgumentException e) {
+//            pass = true;
+//        }
+//        assertTrue(pass);
+//    }
+//
+//    /**
+//     * Some checks for the getCoefficients() method.
+//     */
+//    @Test
+//    public void testGetCoefficients() {
+//        PolynomialFunction2D f = new PolynomialFunction2D(new double[] {1.0,
+//                2.0});
+//        double[] c = f.getCoefficients();
+//        assertArrayEquals(new double[]{1.0, 2.0}, c);
+//
+//        // make sure that modifying the returned array doesn't change the
+//        // function
+//        c[0] = 99.9;
+//        assertArrayEquals(new double[]{1.0, 2.0}, f.getCoefficients());
+//    }
+//
+//    /**
+//     * Some checks for the getOrder() method.
+//     */
+//    @Test
+//    public void testGetOrder() {
+//        PolynomialFunction2D f = new PolynomialFunction2D(new double[] {1.0,
+//                2.0});
+//        assertEquals(1, f.getOrder());
+//    }
+//
+//    /**
+//     * For datasets, the equals() method just checks keys and values.
+//     */
+//    @Test
+//    public void testEquals() {
+//        PolynomialFunction2D f1 = new PolynomialFunction2D(new double[] {1.0,
+//                2.0});
+//        PolynomialFunction2D f2 = new PolynomialFunction2D(new double[] {1.0,
+//                2.0});
+//        assertEquals(f1, f2);
+//        f1 = new PolynomialFunction2D(new double[] {2.0, 3.0});
+//        assertNotEquals(f1, f2);
+//        f2 = new PolynomialFunction2D(new double[] {2.0, 3.0});
+//        assertEquals(f1, f2);
+//    }
+//
+//    /**
+//     * Serialize an instance, restore it, and check for equality.
+//     */
+//    @Test
+//    public void testSerialization() {
+//        PolynomialFunction2D f1 = new PolynomialFunction2D(new double[] {1.0,
+//                2.0});
+//        PolynomialFunction2D f2 = TestUtils.serialised(f1);
+//        assertEquals(f1, f2);
+//    }
+//
+//    /**
+//     * Objects that are equal should have the same hash code otherwise FindBugs
+//     * will tell on us...
+//     */
+//    @Test
+//    public void testHashCode() {
+//        PolynomialFunction2D f1 = new PolynomialFunction2D(new double[] {1.0,
+//                2.0});
+//        PolynomialFunction2D f2 = new PolynomialFunction2D(new double[] {1.0,
+//                2.0});
+//        assertEquals(f1.hashCode(), f2.hashCode());
+//    }
 
     //KItest
 

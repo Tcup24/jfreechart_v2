@@ -47,42 +47,76 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class HistogramBinTest {
 
-    /**
-     * Confirm that the equals method can distinguish all the required fields.
-     */
+//    /**
+//     * Confirm that the equals method can distinguish all the required fields.
+//     */
+//    @Test
+//    public void testEquals() {
+//        double start = 10.0;
+//        double end = 20.0;
+//        HistogramBin b1 = new HistogramBin(start, end);
+//        HistogramBin b2 = new HistogramBin(start, end);
+//        assertEquals(b1, b2);
+//    }
+//
+//    /**
+//     * Confirm that cloning works.
+//     */
+//    @Test
+//    public void testCloning() throws CloneNotSupportedException {
+//        double start = 10.0;
+//        double end = 20.0;
+//        HistogramBin b1 = new HistogramBin(start, end);
+//        HistogramBin b2 = CloneUtils.clone(b1);
+//        assertNotSame(b1, b2);
+//        assertSame(b1.getClass(), b2.getClass());
+//        assertEquals(b1, b2);
+//    }
+//
+//    /**
+//     * Serialize an instance, restore it, and check for equality.
+//     */
+//    @Test
+//    public void testSerialization() {
+//        double start = 10.0;
+//        double end = 20.0;
+//        HistogramBin b1 = new HistogramBin(start, end);
+//        HistogramBin b2 = TestUtils.serialised(b1);
+//        assertEquals(b1, b2);
+//    }
+
+
+    //KItest
     @Test
-    public void testEquals() {
-        double start = 10.0;
-        double end = 20.0;
-        HistogramBin b1 = new HistogramBin(start, end);
-        HistogramBin b2 = new HistogramBin(start, end);
-        assertEquals(b1, b2);
+    public void testEqualsTwo() {
+        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
+        HistogramBin bin2 = new HistogramBin(0.0, 1.0);
+
+        assertTrue(bin1.equals(bin2), "Die Bins sollten gleich sein");
+
+        bin1.incrementCount();
+        assertFalse(bin1.equals(bin2), "Die Bins sollten nicht gleich sein, da die counts unterschiedlich sind");
     }
 
-    /**
-     * Confirm that cloning works.
-     */
     @Test
-    public void testCloning() throws CloneNotSupportedException {
-        double start = 10.0;
-        double end = 20.0;
-        HistogramBin b1 = new HistogramBin(start, end);
-        HistogramBin b2 = CloneUtils.clone(b1);
-        assertNotSame(b1, b2);
-        assertSame(b1.getClass(), b2.getClass());
-        assertEquals(b1, b2);
+    public void testCloningTwo() throws CloneNotSupportedException {
+        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
+        bin1.incrementCount();
+        HistogramBin bin2 = (HistogramBin) bin1.clone();
+
+        assertFalse(bin1 == bin2, "Die geklonten Bins sollten nicht die gleiche Instanz sein");
+        assertTrue(bin1.equals(bin2), "Die geklonten Bins sollten gleich sein");
     }
 
-    /**
-     * Serialize an instance, restore it, and check for equality.
-     */
     @Test
-    public void testSerialization() {
-        double start = 10.0;
-        double end = 20.0;
-        HistogramBin b1 = new HistogramBin(start, end);
-        HistogramBin b2 = TestUtils.serialised(b1);
-        assertEquals(b1, b2);
+    public void testSerializationTwo() {
+        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
+        bin1.incrementCount();
+
+        HistogramBin bin2 = TestUtils.serialised(bin1);
+
+        assertFalse(bin1 == bin2, "Die deserialisierten Bins sollten nicht die gleiche Instanz sein");
+        assertTrue(bin1.equals(bin2), "Die deserialisierten Bins sollten gleich sein");
     }
 
     //Mini
@@ -123,40 +157,6 @@ public class HistogramBinTest {
         assertEquals(original.getCount(), deserialized.getCount(), "Deserialized object should have the same count.");
         assertEquals(original.getStartBoundary(), deserialized.getStartBoundary(), "Deserialized object should have the same start boundary.");
         assertEquals(original.getEndBoundary(), deserialized.getEndBoundary(), "Deserialized object should have the same end boundary.");
-    }
-
-
-    //KItest
-    @Test
-    public void testEqualsTwo() {
-        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
-        HistogramBin bin2 = new HistogramBin(0.0, 1.0);
-
-        assertTrue(bin1.equals(bin2), "Die Bins sollten gleich sein");
-
-        bin1.incrementCount();
-        assertFalse(bin1.equals(bin2), "Die Bins sollten nicht gleich sein, da die counts unterschiedlich sind");
-    }
-
-    @Test
-    public void testCloningTwo() throws CloneNotSupportedException {
-        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
-        bin1.incrementCount();
-        HistogramBin bin2 = (HistogramBin) bin1.clone();
-
-        assertFalse(bin1 == bin2, "Die geklonten Bins sollten nicht die gleiche Instanz sein");
-        assertTrue(bin1.equals(bin2), "Die geklonten Bins sollten gleich sein");
-    }
-
-    @Test
-    public void testSerializationTwo() {
-        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
-        bin1.incrementCount();
-
-        HistogramBin bin2 = TestUtils.serialised(bin1);
-
-        assertFalse(bin1 == bin2, "Die deserialisierten Bins sollten nicht die gleiche Instanz sein");
-        assertTrue(bin1.equals(bin2), "Die deserialisierten Bins sollten gleich sein");
     }
 
 

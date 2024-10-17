@@ -48,48 +48,48 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class FlowKeyTest {
 
-    /**
-     * Confirm that the equals method can distinguish all the required fields.
-     */
-    @Test
-    public void testEquals() {
-        FlowKey<String> k1 = new FlowKey<>(0, "A", "B");
-        FlowKey<String> k2 = new FlowKey<>(0, "A", "B");
-        assertEquals(k1, k2);
-        assertEquals(k2, k1);
-
-        k1 = new FlowKey<>(1, "A", "B");
-        assertNotEquals(k1, k2);
-        k2 = new FlowKey<>(1, "A", "B");
-        assertEquals(k1, k2);
-  
-        k1 = new FlowKey<>(1, "C", "B");
-        assertNotEquals(k1, k2);
-        k2 = new FlowKey<>(1, "C", "B");
-        assertEquals(k1, k2);
-    }
-
-    /**
-     * Confirm that cloning works.
-     */
-    @Test
-    public void testCloning() throws CloneNotSupportedException {
-        FlowKey<String> k1 = new FlowKey<>(0, "A", "B");
-        FlowKey<String> k2 = (FlowKey<String>) k1.clone();
-        assertNotSame(k1, k2);
-        assertSame(k1.getClass(), k2.getClass());
-        assertEquals(k1, k2);
-    }
-
-    /**
-     * Serialize an instance, restore it, and check for equality.
-     */
-    @Test
-    public void testSerialization() {
-        FlowKey<String> k1 = new FlowKey<>(1, "S1", "D1");
-        FlowKey<String> k2 = serialised(k1);
-        assertEquals(k1, k2);
-    }
+//    /**
+//     * Confirm that the equals method can distinguish all the required fields.
+//     */
+//    @Test
+//    public void testEquals() {
+//        FlowKey<String> k1 = new FlowKey<>(0, "A", "B");
+//        FlowKey<String> k2 = new FlowKey<>(0, "A", "B");
+//        assertEquals(k1, k2);
+//        assertEquals(k2, k1);
+//
+//        k1 = new FlowKey<>(1, "A", "B");
+//        assertNotEquals(k1, k2);
+//        k2 = new FlowKey<>(1, "A", "B");
+//        assertEquals(k1, k2);
+//
+//        k1 = new FlowKey<>(1, "C", "B");
+//        assertNotEquals(k1, k2);
+//        k2 = new FlowKey<>(1, "C", "B");
+//        assertEquals(k1, k2);
+//    }
+//
+//    /**
+//     * Confirm that cloning works.
+//     */
+//    @Test
+//    public void testCloning() throws CloneNotSupportedException {
+//        FlowKey<String> k1 = new FlowKey<>(0, "A", "B");
+//        FlowKey<String> k2 = (FlowKey<String>) k1.clone();
+//        assertNotSame(k1, k2);
+//        assertSame(k1.getClass(), k2.getClass());
+//        assertEquals(k1, k2);
+//    }
+//
+//    /**
+//     * Serialize an instance, restore it, and check for equality.
+//     */
+//    @Test
+//    public void testSerialization() {
+//        FlowKey<String> k1 = new FlowKey<>(1, "S1", "D1");
+//        FlowKey<String> k2 = serialised(k1);
+//        assertEquals(k1, k2);
+//    }
 
     //KItest
     @Test
