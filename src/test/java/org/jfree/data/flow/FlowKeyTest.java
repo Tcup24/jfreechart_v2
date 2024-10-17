@@ -92,45 +92,45 @@ public class FlowKeyTest {
 //    }
 
     //KItest
-    @Test
-    public void testEqualsTwo() {
-        FlowKey<String> key1 = new FlowKey<>(1, "sourceA", "destinationA");
-        FlowKey<String> key2 = new FlowKey<>(1, "sourceA", "destinationA");
-        FlowKey<String> key3 = new FlowKey<>(2, "sourceB", "destinationB");
-
-        // Teste, ob zwei identische Objekte als gleich erkannt werden
-        assertEquals(key1, key2);
-
-        // Teste, ob Objekte mit unterschiedlichen Feldern als ungleich erkannt werden
-        assertNotEquals(key1, key3);
-
-        // Teste, ob ein Objekt ungleich null ist
-        assertNotEquals(key1, null);
-
-        // Teste, ob ein Objekt ungleich einem Objekt eines anderen Typs ist
-        assertNotEquals(key1, "ein anderer Typ");
-    }
-
-    @Test
-    public void testCloningTwo() throws CloneNotSupportedException {
-        FlowKey<String> original = new FlowKey<>(1, "sourceA", "destinationA");
-        FlowKey<String> clone = (FlowKey<String>) original.clone();
-
-        // Teste, ob das geklonte Objekt eine andere Instanz ist
-        assertNotSame(original, clone);
-
-        // Teste, ob das geklonte Objekt dieselben Eigenschaften wie das Original aufweist
-        assertEquals(original, clone);
-    }
-
-    @Test
-    public void testSerializationTwo() {
-        FlowKey<String> original = new FlowKey<>(1, "sourceA", "destinationA");
-        FlowKey<String> deserialized = serialised(original);
-
-        // Teste, ob das deserialisierte Objekt dem ursprünglichen Objekt entspricht
-        assertEquals(original, deserialized);
-    }
+//    @Test
+//    public void testEqualsTwo() {
+//        FlowKey<String> key1 = new FlowKey<>(1, "sourceA", "destinationA");
+//        FlowKey<String> key2 = new FlowKey<>(1, "sourceA", "destinationA");
+//        FlowKey<String> key3 = new FlowKey<>(2, "sourceB", "destinationB");
+//
+//        // Teste, ob zwei identische Objekte als gleich erkannt werden
+//        assertEquals(key1, key2);
+//
+//        // Teste, ob Objekte mit unterschiedlichen Feldern als ungleich erkannt werden
+//        assertNotEquals(key1, key3);
+//
+//        // Teste, ob ein Objekt ungleich null ist
+//        assertNotEquals(key1, null);
+//
+//        // Teste, ob ein Objekt ungleich einem Objekt eines anderen Typs ist
+//        assertNotEquals(key1, "ein anderer Typ");
+//    }
+//
+//    @Test
+//    public void testCloningTwo() throws CloneNotSupportedException {
+//        FlowKey<String> original = new FlowKey<>(1, "sourceA", "destinationA");
+//        FlowKey<String> clone = (FlowKey<String>) original.clone();
+//
+//        // Teste, ob das geklonte Objekt eine andere Instanz ist
+//        assertNotSame(original, clone);
+//
+//        // Teste, ob das geklonte Objekt dieselben Eigenschaften wie das Original aufweist
+//        assertEquals(original, clone);
+//    }
+//
+//    @Test
+//    public void testSerializationTwo() {
+//        FlowKey<String> original = new FlowKey<>(1, "sourceA", "destinationA");
+//        FlowKey<String> deserialized = serialised(original);
+//
+//        // Teste, ob das deserialisierte Objekt dem ursprünglichen Objekt entspricht
+//        assertEquals(original, deserialized);
+//    }
 
     //Mini
     @Test

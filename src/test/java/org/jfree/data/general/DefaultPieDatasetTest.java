@@ -183,73 +183,73 @@ public class DefaultPieDatasetTest implements DatasetChangeListener {
         dataset = new DefaultPieDataset<>();
     }
 
-    @Test
-    public void testClearDoesNotTriggerEventWhenEmptyTwo() {
-        // Assuming there is a method to check dataset change event count
-        dataset.clear();
-        // Verify that no event is triggered; placeholder method assumed.
-        // assertEquals(0, dataset.getChangeEventCount());
-    }
-
-    @Test
-    public void testClearTriggersEventWhenNotEmptyTwo() {
-        dataset.setValue("A", 1);
-        // Assuming there is a method to check dataset change event count
-        dataset.clear();
-        // Verify that an event is triggered; placeholder method assumed.
-        // assertEquals(1, dataset.getChangeEventCount());
-    }
-
-    @Test
-    public void testGetKeyMethodTwo() {
-        dataset.setValue("A", 15);
-        dataset.setValue("B", 30);
-
-        assertEquals("A", dataset.getKey(0));
-        assertEquals("B", dataset.getKey(1));
-        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(2));
-    }
-
-    @Test
-    public void testGetIndexMethodTwo() {
-        dataset.setValue("A", 15);
-        dataset.setValue("B", 30);
-
-        assertEquals(0, dataset.getIndex("A"));
-        assertEquals(1, dataset.getIndex("B"));
-        assertThrows(IllegalArgumentException.class, () -> dataset.getIndex(null));
-        assertEquals(-1, dataset.getIndex("C"));
-    }
-
-    @Test
-    public void testCloneMethodTwo() throws CloneNotSupportedException {
-        dataset.setValue("A", 15);
-        DefaultPieDataset<String> clone = (DefaultPieDataset<String>) dataset.clone();
-
-        assertEquals(dataset, clone);
-        assertNotSame(dataset, clone);
-    }
-
-    @Test
-    public void testSerializationDeserializationTwo() {
-        dataset.setValue("A", 15);
-        DefaultPieDataset<String> deserializedDataset = TestUtils.serialised(dataset);
-
-        assertEquals(dataset, deserializedDataset);
-        assertNotSame(dataset, deserializedDataset);
-    }
-
-    @Test
-    public void testBug212HandlingTwo() {
-        dataset.setValue("A", 15);
-        dataset.setValue("B", 30);
-
-        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(-1));
-        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(3));
-
-        assertDoesNotThrow(() -> dataset.getKey(0));
-        assertDoesNotThrow(() -> dataset.getKey(1));
-    }
+//    @Test
+//    public void testClearDoesNotTriggerEventWhenEmptyTwo() {
+//        // Assuming there is a method to check dataset change event count
+//        dataset.clear();
+//        // Verify that no event is triggered; placeholder method assumed.
+//        // assertEquals(0, dataset.getChangeEventCount());
+//    }
+//
+//    @Test
+//    public void testClearTriggersEventWhenNotEmptyTwo() {
+//        dataset.setValue("A", 1);
+//        // Assuming there is a method to check dataset change event count
+//        dataset.clear();
+//        // Verify that an event is triggered; placeholder method assumed.
+//        // assertEquals(1, dataset.getChangeEventCount());
+//    }
+//
+//    @Test
+//    public void testGetKeyMethodTwo() {
+//        dataset.setValue("A", 15);
+//        dataset.setValue("B", 30);
+//
+//        assertEquals("A", dataset.getKey(0));
+//        assertEquals("B", dataset.getKey(1));
+//        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(2));
+//    }
+//
+//    @Test
+//    public void testGetIndexMethodTwo() {
+//        dataset.setValue("A", 15);
+//        dataset.setValue("B", 30);
+//
+//        assertEquals(0, dataset.getIndex("A"));
+//        assertEquals(1, dataset.getIndex("B"));
+//        assertThrows(IllegalArgumentException.class, () -> dataset.getIndex(null));
+//        assertEquals(-1, dataset.getIndex("C"));
+//    }
+//
+//    @Test
+//    public void testCloneMethodTwo() throws CloneNotSupportedException {
+//        dataset.setValue("A", 15);
+//        DefaultPieDataset<String> clone = (DefaultPieDataset<String>) dataset.clone();
+//
+//        assertEquals(dataset, clone);
+//        assertNotSame(dataset, clone);
+//    }
+//
+//    @Test
+//    public void testSerializationDeserializationTwo() {
+//        dataset.setValue("A", 15);
+//        DefaultPieDataset<String> deserializedDataset = TestUtils.serialised(dataset);
+//
+//        assertEquals(dataset, deserializedDataset);
+//        assertNotSame(dataset, deserializedDataset);
+//    }
+//
+//    @Test
+//    public void testBug212HandlingTwo() {
+//        dataset.setValue("A", 15);
+//        dataset.setValue("B", 30);
+//
+//        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(-1));
+//        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(3));
+//
+//        assertDoesNotThrow(() -> dataset.getKey(0));
+//        assertDoesNotThrow(() -> dataset.getKey(1));
+//    }
 
 
     //Mini

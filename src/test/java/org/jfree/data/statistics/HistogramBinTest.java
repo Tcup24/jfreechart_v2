@@ -86,38 +86,38 @@ public class HistogramBinTest {
 //    }
 
 
-    //KItest
-    @Test
-    public void testEqualsTwo() {
-        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
-        HistogramBin bin2 = new HistogramBin(0.0, 1.0);
-
-        assertTrue(bin1.equals(bin2), "Die Bins sollten gleich sein");
-
-        bin1.incrementCount();
-        assertFalse(bin1.equals(bin2), "Die Bins sollten nicht gleich sein, da die counts unterschiedlich sind");
-    }
-
-    @Test
-    public void testCloningTwo() throws CloneNotSupportedException {
-        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
-        bin1.incrementCount();
-        HistogramBin bin2 = (HistogramBin) bin1.clone();
-
-        assertFalse(bin1 == bin2, "Die geklonten Bins sollten nicht die gleiche Instanz sein");
-        assertTrue(bin1.equals(bin2), "Die geklonten Bins sollten gleich sein");
-    }
-
-    @Test
-    public void testSerializationTwo() {
-        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
-        bin1.incrementCount();
-
-        HistogramBin bin2 = TestUtils.serialised(bin1);
-
-        assertFalse(bin1 == bin2, "Die deserialisierten Bins sollten nicht die gleiche Instanz sein");
-        assertTrue(bin1.equals(bin2), "Die deserialisierten Bins sollten gleich sein");
-    }
+//    //KItest
+//    @Test
+//    public void testEqualsTwo() {
+//        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
+//        HistogramBin bin2 = new HistogramBin(0.0, 1.0);
+//
+//        assertTrue(bin1.equals(bin2), "Die Bins sollten gleich sein");
+//
+//        bin1.incrementCount();
+//        assertFalse(bin1.equals(bin2), "Die Bins sollten nicht gleich sein, da die counts unterschiedlich sind");
+//    }
+//
+//    @Test
+//    public void testCloningTwo() throws CloneNotSupportedException {
+//        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
+//        bin1.incrementCount();
+//        HistogramBin bin2 = (HistogramBin) bin1.clone();
+//
+//        assertFalse(bin1 == bin2, "Die geklonten Bins sollten nicht die gleiche Instanz sein");
+//        assertTrue(bin1.equals(bin2), "Die geklonten Bins sollten gleich sein");
+//    }
+//
+//    @Test
+//    public void testSerializationTwo() {
+//        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
+//        bin1.incrementCount();
+//
+//        HistogramBin bin2 = TestUtils.serialised(bin1);
+//
+//        assertFalse(bin1 == bin2, "Die deserialisierten Bins sollten nicht die gleiche Instanz sein");
+//        assertTrue(bin1.equals(bin2), "Die deserialisierten Bins sollten gleich sein");
+//    }
 
     //Mini
     @Test

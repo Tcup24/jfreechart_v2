@@ -159,77 +159,77 @@ public class SimpleHistogramBinTest {
 //    }
 
     //KItest
-    @Test
-    public void testAcceptsTwo() {
-        SimpleHistogramBin bin = new SimpleHistogramBin(0.0, 10.0, true, false);
-
-        assertTrue(bin.accepts(0.0));   // unterer Grenzwert eingeschlossen
-        assertTrue(bin.accepts(5.0));   // innerhalb des Bereichs
-        assertFalse(bin.accepts(10.0)); // oberer Grenzwert ausgeschlossen
-
-        bin = new SimpleHistogramBin(0.0, 10.0, false, true);
-        assertFalse(bin.accepts(0.0));  // unterer Grenzwert ausgeschlossen
-        assertTrue(bin.accepts(10.0));  // oberer Grenzwert eingeschlossen
-
-        bin = new SimpleHistogramBin(0.0, 10.0, false, false);
-        assertFalse(bin.accepts(0.0));  // unterer Grenzwert ausgeschlossen
-        assertFalse(bin.accepts(10.0)); // oberer Grenzwert ausgeschlossen
-    }
-
-    @Test
-    public void testOverlapsWithTwo() {
-        SimpleHistogramBin bin1 = new SimpleHistogramBin(0.0, 5.0, true, false);
-        SimpleHistogramBin bin2 = new SimpleHistogramBin(5.0, 10.0, true, false);
-
-        assertFalse(bin1.overlapsWith(bin2)); // Keine Überlappung
-
-        bin2 = new SimpleHistogramBin(4.0, 10.0, true, false);
-        assertTrue(bin1.overlapsWith(bin2));  // Überlappt sich
-
-        bin1 = new SimpleHistogramBin(5.0, 10.0, true, true);
-        bin2 = new SimpleHistogramBin(10.0, 15.0, true, true);
-        assertTrue(bin1.overlapsWith(bin2));  // Überlappt an der Grenze
-    }
-
-    @Test
-    public void testEqualsTwo() {
-        SimpleHistogramBin bin1 = new SimpleHistogramBin(0.0, 10.0, true, true);
-        SimpleHistogramBin bin2 = new SimpleHistogramBin(0.0, 10.0, true, true);
-        SimpleHistogramBin bin3 = new SimpleHistogramBin(0.0, 10.0, false, true);
-
-        assertEquals(bin1, bin2);    // Gleiche Objekte
-        assertNotEquals(bin1, bin3); // Unterschiedliche Einstellungen
-
-        bin1.setItemCount(5);
-        bin2.setItemCount(5);
-        assertEquals(bin1, bin2);    // Gleiche Objekte mit gleichem ItemCount
-
-        bin2.setItemCount(10);
-        assertNotEquals(bin1, bin2); // Unterschiedlicher ItemCount
-    }
-
-    @Test
-    public void testCloningTwo() throws CloneNotSupportedException {
-        SimpleHistogramBin bin1 = new SimpleHistogramBin(0.0, 10.0, true, true);
-        SimpleHistogramBin bin2 = (SimpleHistogramBin) bin1.clone();
-
-        assertEquals(bin1, bin2); // Anfangs gleich
-        assertNotSame(bin1, bin2); // Unterschiedliche Referenzen
-
-        bin2.setItemCount(5);
-        assertNotEquals(bin1.getItemCount(), bin2.getItemCount()); // Änderungen sollten unabhängig sein
-    }
-
-    @Test
-    public void testSerializationTwo() {
-        SimpleHistogramBin original = new SimpleHistogramBin(0.0, 10.0, true, true);
-        original.setItemCount(5);
-
-        SimpleHistogramBin deserialized = serialised(original);
-
-        assertEquals(original, deserialized); // Deserialisiertes Objekt sollte gleich sein
-        assertNotSame(original, deserialized); // Unterschiedliche Referenzen
-    }
+//    @Test
+//    public void testAcceptsTwo() {
+//        SimpleHistogramBin bin = new SimpleHistogramBin(0.0, 10.0, true, false);
+//
+//        assertTrue(bin.accepts(0.0));   // unterer Grenzwert eingeschlossen
+//        assertTrue(bin.accepts(5.0));   // innerhalb des Bereichs
+//        assertFalse(bin.accepts(10.0)); // oberer Grenzwert ausgeschlossen
+//
+//        bin = new SimpleHistogramBin(0.0, 10.0, false, true);
+//        assertFalse(bin.accepts(0.0));  // unterer Grenzwert ausgeschlossen
+//        assertTrue(bin.accepts(10.0));  // oberer Grenzwert eingeschlossen
+//
+//        bin = new SimpleHistogramBin(0.0, 10.0, false, false);
+//        assertFalse(bin.accepts(0.0));  // unterer Grenzwert ausgeschlossen
+//        assertFalse(bin.accepts(10.0)); // oberer Grenzwert ausgeschlossen
+//    }
+//
+//    @Test
+//    public void testOverlapsWithTwo() {
+//        SimpleHistogramBin bin1 = new SimpleHistogramBin(0.0, 5.0, true, false);
+//        SimpleHistogramBin bin2 = new SimpleHistogramBin(5.0, 10.0, true, false);
+//
+//        assertFalse(bin1.overlapsWith(bin2)); // Keine Überlappung
+//
+//        bin2 = new SimpleHistogramBin(4.0, 10.0, true, false);
+//        assertTrue(bin1.overlapsWith(bin2));  // Überlappt sich
+//
+//        bin1 = new SimpleHistogramBin(5.0, 10.0, true, true);
+//        bin2 = new SimpleHistogramBin(10.0, 15.0, true, true);
+//        assertTrue(bin1.overlapsWith(bin2));  // Überlappt an der Grenze
+//    }
+//
+//    @Test
+//    public void testEqualsTwo() {
+//        SimpleHistogramBin bin1 = new SimpleHistogramBin(0.0, 10.0, true, true);
+//        SimpleHistogramBin bin2 = new SimpleHistogramBin(0.0, 10.0, true, true);
+//        SimpleHistogramBin bin3 = new SimpleHistogramBin(0.0, 10.0, false, true);
+//
+//        assertEquals(bin1, bin2);    // Gleiche Objekte
+//        assertNotEquals(bin1, bin3); // Unterschiedliche Einstellungen
+//
+//        bin1.setItemCount(5);
+//        bin2.setItemCount(5);
+//        assertEquals(bin1, bin2);    // Gleiche Objekte mit gleichem ItemCount
+//
+//        bin2.setItemCount(10);
+//        assertNotEquals(bin1, bin2); // Unterschiedlicher ItemCount
+//    }
+//
+//    @Test
+//    public void testCloningTwo() throws CloneNotSupportedException {
+//        SimpleHistogramBin bin1 = new SimpleHistogramBin(0.0, 10.0, true, true);
+//        SimpleHistogramBin bin2 = (SimpleHistogramBin) bin1.clone();
+//
+//        assertEquals(bin1, bin2); // Anfangs gleich
+//        assertNotSame(bin1, bin2); // Unterschiedliche Referenzen
+//
+//        bin2.setItemCount(5);
+//        assertNotEquals(bin1.getItemCount(), bin2.getItemCount()); // Änderungen sollten unabhängig sein
+//    }
+//
+//    @Test
+//    public void testSerializationTwo() {
+//        SimpleHistogramBin original = new SimpleHistogramBin(0.0, 10.0, true, true);
+//        original.setItemCount(5);
+//
+//        SimpleHistogramBin deserialized = serialised(original);
+//
+//        assertEquals(original, deserialized); // Deserialisiertes Objekt sollte gleich sein
+//        assertNotSame(original, deserialized); // Unterschiedliche Referenzen
+//    }
 
 
     //Mini

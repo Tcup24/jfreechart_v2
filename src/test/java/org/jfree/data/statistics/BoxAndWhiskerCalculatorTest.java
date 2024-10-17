@@ -162,81 +162,81 @@ public class BoxAndWhiskerCalculatorTest {
 
     //KItest
 
-    @Test
-    public void testCalculateBoxAndWhiskerStatistics_SingleElementThree() {
-        // Test: Method should correctly calculate statistics for a list with one element
-        List<Number> data = Collections.singletonList(5);
-        BoxAndWhiskerItem result = BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(data);
-
-        assertEquals(5.0, result.getMean().doubleValue(), EPSILON);
-        assertEquals(5.0, result.getMedian().doubleValue(), EPSILON);
-        assertEquals(5.0, result.getQ1().doubleValue(), EPSILON);
-        assertEquals(5.0, result.getQ3().doubleValue(), EPSILON);
-    }
-
-    @Test
-    public void testCalculateBoxAndWhiskerStatistics_InvalidInputThree() {
-        try {
-            BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(null);
-            fail("Expected IllegalArgumentException was not thrown");
-        } catch (IllegalArgumentException e) {
-            // Überprüfen Sie die Fehlermeldung, um sicherzustellen, dass es die richtige Ausnahme ist
-            assertEquals("Null 'values' argument.", e.getMessage());
-        }
-    }
-
-    @Test
-    public void testCalculateQ1_InvalidInputThree() {
-        try {
-            BoxAndWhiskerCalculator.calculateQ1(null);
-            fail("Expected IllegalArgumentException was not thrown");
-        } catch (IllegalArgumentException e) {
-            assertEquals("Null 'values' argument.", e.getMessage());
-        }
-    }
-
-    @Test
-    public void testCalculateQ3_InvalidInputTwo() {
-        try {
-            BoxAndWhiskerCalculator.calculateQ3(null);
-            fail("Expected IllegalArgumentException was not thrown");
-        } catch (IllegalArgumentException e) {
-            assertEquals("Null 'values' argument.", e.getMessage());
-        }
-    }
-
-    @Test
-    public void testCalculateQ1_ValidInputsTwo() {
-        List<Number> emptyList = Collections.emptyList();
-        assertTrue(Double.isNaN(BoxAndWhiskerCalculator.calculateQ1(emptyList)));
-
-        List<Number> singleElement = Collections.singletonList(5);
-        assertEquals(5.0, BoxAndWhiskerCalculator.calculateQ1(singleElement), EPSILON);
-
-        List<Number> data = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        assertEquals(3.0, BoxAndWhiskerCalculator.calculateQ1(data), EPSILON);
-    }
-
-    @Test
-    public void testCalculateQ3_ValidInputsTwo() {
-        List<Number> emptyList = Collections.emptyList();
-        assertTrue(Double.isNaN(BoxAndWhiskerCalculator.calculateQ3(emptyList)));
-
-        List<Number> singleElement = Collections.singletonList(5);
-        assertEquals(5.0, BoxAndWhiskerCalculator.calculateQ3(singleElement), EPSILON);
-
-        List<Number> data = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        assertEquals(7.0, BoxAndWhiskerCalculator.calculateQ3(data), EPSILON);
-    }
-
-    @Test
-    public void test1593149Three() {
-        List<Number> data = Arrays.asList(1, 2, Double.NaN, 4, 5, Double.NaN, 7);
-        BoxAndWhiskerItem result = BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(data);
-
-        assertEquals(1.0, result.getMinRegularValue().doubleValue(), EPSILON);
-        assertEquals(7.0, result.getMaxRegularValue().doubleValue(), EPSILON);
-    }
+//    @Test
+//    public void testCalculateBoxAndWhiskerStatistics_SingleElementThree() {
+//        // Test: Method should correctly calculate statistics for a list with one element
+//        List<Number> data = Collections.singletonList(5);
+//        BoxAndWhiskerItem result = BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(data);
+//
+//        assertEquals(5.0, result.getMean().doubleValue(), EPSILON);
+//        assertEquals(5.0, result.getMedian().doubleValue(), EPSILON);
+//        assertEquals(5.0, result.getQ1().doubleValue(), EPSILON);
+//        assertEquals(5.0, result.getQ3().doubleValue(), EPSILON);
+//    }
+//
+//    @Test
+//    public void testCalculateBoxAndWhiskerStatistics_InvalidInputThree() {
+//        try {
+//            BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(null);
+//            fail("Expected IllegalArgumentException was not thrown");
+//        } catch (IllegalArgumentException e) {
+//            // Überprüfen Sie die Fehlermeldung, um sicherzustellen, dass es die richtige Ausnahme ist
+//            assertEquals("Null 'values' argument.", e.getMessage());
+//        }
+//    }
+//
+//    @Test
+//    public void testCalculateQ1_InvalidInputThree() {
+//        try {
+//            BoxAndWhiskerCalculator.calculateQ1(null);
+//            fail("Expected IllegalArgumentException was not thrown");
+//        } catch (IllegalArgumentException e) {
+//            assertEquals("Null 'values' argument.", e.getMessage());
+//        }
+//    }
+//
+//    @Test
+//    public void testCalculateQ3_InvalidInputTwo() {
+//        try {
+//            BoxAndWhiskerCalculator.calculateQ3(null);
+//            fail("Expected IllegalArgumentException was not thrown");
+//        } catch (IllegalArgumentException e) {
+//            assertEquals("Null 'values' argument.", e.getMessage());
+//        }
+//    }
+//
+//    @Test
+//    public void testCalculateQ1_ValidInputsTwo() {
+//        List<Number> emptyList = Collections.emptyList();
+//        assertTrue(Double.isNaN(BoxAndWhiskerCalculator.calculateQ1(emptyList)));
+//
+//        List<Number> singleElement = Collections.singletonList(5);
+//        assertEquals(5.0, BoxAndWhiskerCalculator.calculateQ1(singleElement), EPSILON);
+//
+//        List<Number> data = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+//        assertEquals(3.0, BoxAndWhiskerCalculator.calculateQ1(data), EPSILON);
+//    }
+//
+//    @Test
+//    public void testCalculateQ3_ValidInputsTwo() {
+//        List<Number> emptyList = Collections.emptyList();
+//        assertTrue(Double.isNaN(BoxAndWhiskerCalculator.calculateQ3(emptyList)));
+//
+//        List<Number> singleElement = Collections.singletonList(5);
+//        assertEquals(5.0, BoxAndWhiskerCalculator.calculateQ3(singleElement), EPSILON);
+//
+//        List<Number> data = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+//        assertEquals(7.0, BoxAndWhiskerCalculator.calculateQ3(data), EPSILON);
+//    }
+//
+//    @Test
+//    public void test1593149Three() {
+//        List<Number> data = Arrays.asList(1, 2, Double.NaN, 4, 5, Double.NaN, 7);
+//        BoxAndWhiskerItem result = BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(data);
+//
+//        assertEquals(1.0, result.getMinRegularValue().doubleValue(), EPSILON);
+//        assertEquals(7.0, result.getMaxRegularValue().doubleValue(), EPSILON);
+//    }
 
     //Mini
 

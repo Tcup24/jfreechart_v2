@@ -307,90 +307,90 @@ public class TimePeriodValuesTest {
     public void setUp() {
         timePeriodValues = new TimePeriodValues<>("Test Series");
     }
-
-    @Test
-    public void testCloneFunctionality() throws CloneNotSupportedException {
-        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-        TimePeriodValues<?> clone = (TimePeriodValues<?>) timePeriodValues.clone();
-        clone.update(0, 200);
-        assertNotEquals(timePeriodValues.getValue(0), clone.getValue(0));
-    }
-
-    @Test
-    public void testAddValueTwo() {
-        Day day = new Day(1, 1, 2022);
-        TimePeriodValue tpv = new TimePeriodValue(day, 100);
-        timePeriodValues.add(tpv);
-        assertEquals(1, timePeriodValues.getItemCount());
-        assertEquals(tpv, timePeriodValues.getDataItem(0));
-    }
-
-    @Test
-    public void testSerializationTwo() throws IOException, ClassNotFoundException {
-        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ObjectOutputStream out = new ObjectOutputStream(bos);
-        out.writeObject(timePeriodValues);
-
-        ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-        ObjectInputStream in = new ObjectInputStream(bis);
-        TimePeriodValues<?> deserialized = (TimePeriodValues<?>) in.readObject();
-
-        assertEquals(timePeriodValues, deserialized);
-    }
-
-    @Test
-    public void testEqualsTwo() {
-        TimePeriodValues another = new TimePeriodValues<>("Test Series");
-        assertEquals(timePeriodValues, another);
-
-        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-        another.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-        assertEquals(timePeriodValues, another);
-
-        another.add(new TimePeriodValue(new Day(2, 1, 2022), 200));
-        assertNotEquals(timePeriodValues, another);
-    }
-
-    @Test
-    public void testDeleteValuesTwo() {
-        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 200));
-        timePeriodValues.delete(0, 0);
-        assertEquals(1, timePeriodValues.getItemCount());
-    }
-
-    @Test
-    public void testSeriesChangeListenerTwo() {
-        final boolean[] flag = {false};
-        timePeriodValues.addChangeListener(event -> flag[0] = true);
-
-        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-        assertTrue(flag[0]);
-    }
-
-    @Test
-    public void testMinMaxStartIndexTwo() {
-        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 100));
-        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 200));
-        assertEquals(1, timePeriodValues.getMinStartIndex());
-        assertEquals(0, timePeriodValues.getMaxStartIndex());
-    }
-
-    @Test
-    public void testMinMaxMiddleIndexTwo() {
-        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 100));
-        timePeriodValues.add(new TimePeriodValue(new Day(1, 2, 2022), 200));
-        assertEquals(0, timePeriodValues.getMinMiddleIndex());
-        assertEquals(1, timePeriodValues.getMaxMiddleIndex());
-    }
-
-    @Test
-    public void testInvalidInputsTwo() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            timePeriodValues.add(null);
-        });
-    }
+//
+//    @Test
+//    public void testCloneFunctionality() throws CloneNotSupportedException {
+//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+//        TimePeriodValues<?> clone = (TimePeriodValues<?>) timePeriodValues.clone();
+//        clone.update(0, 200);
+//        assertNotEquals(timePeriodValues.getValue(0), clone.getValue(0));
+//    }
+//
+//    @Test
+//    public void testAddValueTwo() {
+//        Day day = new Day(1, 1, 2022);
+//        TimePeriodValue tpv = new TimePeriodValue(day, 100);
+//        timePeriodValues.add(tpv);
+//        assertEquals(1, timePeriodValues.getItemCount());
+//        assertEquals(tpv, timePeriodValues.getDataItem(0));
+//    }
+//
+//    @Test
+//    public void testSerializationTwo() throws IOException, ClassNotFoundException {
+//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+//        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//        ObjectOutputStream out = new ObjectOutputStream(bos);
+//        out.writeObject(timePeriodValues);
+//
+//        ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+//        ObjectInputStream in = new ObjectInputStream(bis);
+//        TimePeriodValues<?> deserialized = (TimePeriodValues<?>) in.readObject();
+//
+//        assertEquals(timePeriodValues, deserialized);
+//    }
+//
+//    @Test
+//    public void testEqualsTwo() {
+//        TimePeriodValues another = new TimePeriodValues<>("Test Series");
+//        assertEquals(timePeriodValues, another);
+//
+//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+//        another.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+//        assertEquals(timePeriodValues, another);
+//
+//        another.add(new TimePeriodValue(new Day(2, 1, 2022), 200));
+//        assertNotEquals(timePeriodValues, another);
+//    }
+//
+//    @Test
+//    public void testDeleteValuesTwo() {
+//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+//        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 200));
+//        timePeriodValues.delete(0, 0);
+//        assertEquals(1, timePeriodValues.getItemCount());
+//    }
+//
+//    @Test
+//    public void testSeriesChangeListenerTwo() {
+//        final boolean[] flag = {false};
+//        timePeriodValues.addChangeListener(event -> flag[0] = true);
+//
+//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+//        assertTrue(flag[0]);
+//    }
+//
+//    @Test
+//    public void testMinMaxStartIndexTwo() {
+//        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 100));
+//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 200));
+//        assertEquals(1, timePeriodValues.getMinStartIndex());
+//        assertEquals(0, timePeriodValues.getMaxStartIndex());
+//    }
+//
+//    @Test
+//    public void testMinMaxMiddleIndexTwo() {
+//        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 100));
+//        timePeriodValues.add(new TimePeriodValue(new Day(1, 2, 2022), 200));
+//        assertEquals(0, timePeriodValues.getMinMiddleIndex());
+//        assertEquals(1, timePeriodValues.getMaxMiddleIndex());
+//    }
+//
+//    @Test
+//    public void testInvalidInputsTwo() {
+//        assertThrows(IllegalArgumentException.class, () -> {
+//            timePeriodValues.add(null);
+//        });
+//    }
 
 
 

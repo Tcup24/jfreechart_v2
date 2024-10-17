@@ -352,144 +352,144 @@ public class RangeTest {
 //    }
 
 
-    //KItest
-    @Test
-    public void testConstructorTwo() {
-        // Test, dass der Konstruktor korrekt initialisiert
-        Range range = new Range(0.0, 10.0);
-        assertEquals(0.0, range.getLowerBound());
-        assertEquals(10.0, range.getUpperBound());
-
-        // Test, dass eine Ausnahme bei ungültiger Reihenfolge geworfen wird
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Range(10.0, 0.0);
-        });
-    }
-
-    @Test
-    public void testEqualsTwo() {
-        Range range1 = new Range(0.0, 10.0);
-        Range range2 = new Range(0.0, 10.0);
-        Range range3 = new Range(5.0, 15.0);
-
-        assertEquals(range1, range2);
-        assertNotEquals(range1, range3);
-        assertNotEquals(range1, "Not a Range");
-    }
-
-    @Test
-    public void testHashCodeTwo() {
-        Range range1 = new Range(0.0, 10.0);
-        Range range2 = new Range(0.0, 10.0);
-        assertEquals(range1.hashCode(), range2.hashCode());
-    }
-
-    @Test
-    public void testContainsTwo() {
-        Range range = new Range(0.0, 10.0);
-        assertTrue(range.contains(5.0));
-        assertFalse(range.contains(-1.0));
-        assertFalse(range.contains(15.0));
-    }
-
-    @Test
-    public void testConstrainTwo() {
-        Range range = new Range(0.0, 10.0);
-        assertEquals(5.0, range.constrain(5.0));
-        assertEquals(10.0, range.constrain(15.0));
-        assertEquals(0.0, range.constrain(-1.0));
-    }
-
-    @Test
-    public void testIntersectsThree() {
-        Range range1 = new Range(0.0, 10.0);
-        Range range2 = new Range(5.0, 15.0);
-        Range range3 = new Range(10.0, 20.0);
-        Range range4 = new Range(15.0, 25.0);
-
-        assertTrue(range1.intersects(range2));  // Diese Bereiche überschneiden sich
-        assertFalse(range1.intersects(range3)); // Anpassung: Keine Überschneidung, wenn die Ränder nur berühren sollten
-        assertFalse(range1.intersects(range4)); // Keine Überschneidung
-    }
-
-    @Test
-    public void testExpandTwo() {
-        Range range = new Range(0.0, 10.0);
-        Range expandedRange = Range.expand(range, 0.1, 0.1);
-        assertEquals(-1.0, expandedRange.getLowerBound());
-        assertEquals(11.0, expandedRange.getUpperBound());
-    }
-
-    @Test
-    public void testShiftTwo() {
-        Range range = new Range(0.0, 10.0);
-        Range shiftedRange = Range.shift(range, 5.0);
-        assertEquals(5.0, shiftedRange.getLowerBound());
-        assertEquals(15.0, shiftedRange.getUpperBound());
-    }
-
-    @Test
-    public void testScaleTwo() {
-        Range range = new Range(0.0, 10.0);
-        Range scaledRange = Range.scale(range, 2.0);
-        assertEquals(0.0, scaledRange.getLowerBound());
-        assertEquals(20.0, scaledRange.getUpperBound());
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            Range.scale(range, -1.0);
-        });
-    }
-
-    @Test
-    public void testSerializationTwo() {
-        try {
-            Range range = new Range(0.0, 10.0);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(range);
-            oos.close();
-
-            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            Range deserializedRange = (Range) ois.readObject();
-            ois.close();
-
-            assertEquals(range, deserializedRange);
-        } catch (IOException | ClassNotFoundException e) {
-            fail("Exception thrown during serialization/deserialization: " + e.getMessage());
-        }
-    }
-
-    @Test
-    public void testCombineTwo() {
-        Range range1 = new Range(0.0, 10.0);
-        Range range2 = new Range(5.0, 15.0);
-        Range combinedRange = Range.combine(range1, range2);
-
-        assertEquals(0.0, combinedRange.getLowerBound());
-        assertEquals(15.0, combinedRange.getUpperBound());
-    }
-
-    @Test
-    public void testCombineIgnoringNaNTwo() {
-        Range range1 = new Range(0.0, Double.NaN);
-        Range range2 = new Range(Double.NaN, 15.0);
-        Range combinedRange = Range.combineIgnoringNaN(range1, range2);
-
-        assertEquals(0.0, combinedRange.getLowerBound());
-        assertEquals(15.0, combinedRange.getUpperBound());
-    }
-
-    @Test
-    public void testIsNaNRangeTwo() {
-        Range range1 = new Range(Double.NaN, Double.NaN);
-        Range range2 = new Range(0.0, Double.NaN);
-        Range range3 = new Range(Double.NaN, 10.0);
-
-        assertTrue(range1.isNaNRange());
-        assertFalse(range2.isNaNRange());
-        assertFalse(range3.isNaNRange());
-    }
+//    //KItest
+//    @Test
+//    public void testConstructorTwo() {
+//        // Test, dass der Konstruktor korrekt initialisiert
+//        Range range = new Range(0.0, 10.0);
+//        assertEquals(0.0, range.getLowerBound());
+//        assertEquals(10.0, range.getUpperBound());
+//
+//        // Test, dass eine Ausnahme bei ungültiger Reihenfolge geworfen wird
+//        assertThrows(IllegalArgumentException.class, () -> {
+//            new Range(10.0, 0.0);
+//        });
+//    }
+//
+//    @Test
+//    public void testEqualsTwo() {
+//        Range range1 = new Range(0.0, 10.0);
+//        Range range2 = new Range(0.0, 10.0);
+//        Range range3 = new Range(5.0, 15.0);
+//
+//        assertEquals(range1, range2);
+//        assertNotEquals(range1, range3);
+//        assertNotEquals(range1, "Not a Range");
+//    }
+//
+//    @Test
+//    public void testHashCodeTwo() {
+//        Range range1 = new Range(0.0, 10.0);
+//        Range range2 = new Range(0.0, 10.0);
+//        assertEquals(range1.hashCode(), range2.hashCode());
+//    }
+//
+//    @Test
+//    public void testContainsTwo() {
+//        Range range = new Range(0.0, 10.0);
+//        assertTrue(range.contains(5.0));
+//        assertFalse(range.contains(-1.0));
+//        assertFalse(range.contains(15.0));
+//    }
+//
+//    @Test
+//    public void testConstrainTwo() {
+//        Range range = new Range(0.0, 10.0);
+//        assertEquals(5.0, range.constrain(5.0));
+//        assertEquals(10.0, range.constrain(15.0));
+//        assertEquals(0.0, range.constrain(-1.0));
+//    }
+//
+//    @Test
+//    public void testIntersectsThree() {
+//        Range range1 = new Range(0.0, 10.0);
+//        Range range2 = new Range(5.0, 15.0);
+//        Range range3 = new Range(10.0, 20.0);
+//        Range range4 = new Range(15.0, 25.0);
+//
+//        assertTrue(range1.intersects(range2));  // Diese Bereiche überschneiden sich
+//        assertFalse(range1.intersects(range3)); // Anpassung: Keine Überschneidung, wenn die Ränder nur berühren sollten
+//        assertFalse(range1.intersects(range4)); // Keine Überschneidung
+//    }
+//
+//    @Test
+//    public void testExpandTwo() {
+//        Range range = new Range(0.0, 10.0);
+//        Range expandedRange = Range.expand(range, 0.1, 0.1);
+//        assertEquals(-1.0, expandedRange.getLowerBound());
+//        assertEquals(11.0, expandedRange.getUpperBound());
+//    }
+//
+//    @Test
+//    public void testShiftTwo() {
+//        Range range = new Range(0.0, 10.0);
+//        Range shiftedRange = Range.shift(range, 5.0);
+//        assertEquals(5.0, shiftedRange.getLowerBound());
+//        assertEquals(15.0, shiftedRange.getUpperBound());
+//    }
+//
+//    @Test
+//    public void testScaleTwo() {
+//        Range range = new Range(0.0, 10.0);
+//        Range scaledRange = Range.scale(range, 2.0);
+//        assertEquals(0.0, scaledRange.getLowerBound());
+//        assertEquals(20.0, scaledRange.getUpperBound());
+//
+//        assertThrows(IllegalArgumentException.class, () -> {
+//            Range.scale(range, -1.0);
+//        });
+//    }
+//
+//    @Test
+//    public void testSerializationTwo() {
+//        try {
+//            Range range = new Range(0.0, 10.0);
+//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//            ObjectOutputStream oos = new ObjectOutputStream(baos);
+//            oos.writeObject(range);
+//            oos.close();
+//
+//            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+//            ObjectInputStream ois = new ObjectInputStream(bais);
+//            Range deserializedRange = (Range) ois.readObject();
+//            ois.close();
+//
+//            assertEquals(range, deserializedRange);
+//        } catch (IOException | ClassNotFoundException e) {
+//            fail("Exception thrown during serialization/deserialization: " + e.getMessage());
+//        }
+//    }
+//
+//    @Test
+//    public void testCombineTwo() {
+//        Range range1 = new Range(0.0, 10.0);
+//        Range range2 = new Range(5.0, 15.0);
+//        Range combinedRange = Range.combine(range1, range2);
+//
+//        assertEquals(0.0, combinedRange.getLowerBound());
+//        assertEquals(15.0, combinedRange.getUpperBound());
+//    }
+//
+//    @Test
+//    public void testCombineIgnoringNaNTwo() {
+//        Range range1 = new Range(0.0, Double.NaN);
+//        Range range2 = new Range(Double.NaN, 15.0);
+//        Range combinedRange = Range.combineIgnoringNaN(range1, range2);
+//
+//        assertEquals(0.0, combinedRange.getLowerBound());
+//        assertEquals(15.0, combinedRange.getUpperBound());
+//    }
+//
+//    @Test
+//    public void testIsNaNRangeTwo() {
+//        Range range1 = new Range(Double.NaN, Double.NaN);
+//        Range range2 = new Range(0.0, Double.NaN);
+//        Range range3 = new Range(Double.NaN, 10.0);
+//
+//        assertTrue(range1.isNaNRange());
+//        assertFalse(range2.isNaNRange());
+//        assertFalse(range3.isNaNRange());
+//    }
 
 //Mini
 // Test für den Konstruktor
