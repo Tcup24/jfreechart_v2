@@ -51,11 +51,11 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class SimpleTimePeriodTest {
 
-//    /**
-//     * Check that an instance is equal to itself.
-//     *
-//     * SourceForge Bug ID: 558850.
-//     */
+    /**
+     * Check that an instance is equal to itself.
+     *
+     * SourceForge Bug ID: 558850.
+     */
 //    @Test
 //    public void testEqualsSelf() {
 //        SimpleTimePeriod p = new SimpleTimePeriod(new Date(1000L),

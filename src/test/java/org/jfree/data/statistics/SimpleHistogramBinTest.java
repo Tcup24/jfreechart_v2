@@ -48,9 +48,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class SimpleHistogramBinTest {
 
-//    /**
-//     * Some checks for the accepts() method.
-//     */
+    /**
+     * Some checks for the accepts() method.
+     */
 //    @Test
 //    public void testAccepts() {
 //        SimpleHistogramBin bin1 = new SimpleHistogramBin(1.0, 2.0);

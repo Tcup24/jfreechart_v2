@@ -47,9 +47,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class HistogramBinTest {
 
-//    /**
-//     * Confirm that the equals method can distinguish all the required fields.
-//     */
+    /**
+     * Confirm that the equals method can distinguish all the required fields.
+     */
 //    @Test
 //    public void testEquals() {
 //        double start = 10.0;
@@ -86,7 +86,7 @@ public class HistogramBinTest {
 //    }
 
 
-//    //KItest
+    //KItest
 //    @Test
 //    public void testEqualsTwo() {
 //        HistogramBin bin1 = new HistogramBin(0.0, 1.0);

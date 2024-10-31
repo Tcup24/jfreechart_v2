@@ -60,9 +60,9 @@ public class DefaultPieDatasetTest implements DatasetChangeListener {
         this.lastEvent = event;
     }
 
-//    /**
-//     * Some tests for the clear() method.
-//     */
+    /**
+     * Some tests for the clear() method.
+     */
 //    @Test
 //    public void testClear() {
 //        DefaultPieDataset<String> d = new DefaultPieDataset<>();
@@ -182,7 +182,7 @@ public class DefaultPieDatasetTest implements DatasetChangeListener {
     public void setUp() {
         dataset = new DefaultPieDataset<>();
     }
-
+//
 //    @Test
 //    public void testClearDoesNotTriggerEventWhenEmptyTwo() {
 //        // Assuming there is a method to check dataset change event count

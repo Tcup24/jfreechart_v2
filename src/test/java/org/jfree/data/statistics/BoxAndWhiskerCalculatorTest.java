@@ -49,9 +49,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class BoxAndWhiskerCalculatorTest {
 
-//    /**
-//     * Some checks for the calculateBoxAndWhiskerStatistics() method.
-//     */
+    /**
+     * Some checks for the calculateBoxAndWhiskerStatistics() method.
+     */
 //    @Test
 //    public void testCalculateBoxAndWhiskerStatistics() {
 //
@@ -75,9 +75,9 @@ public class BoxAndWhiskerCalculatorTest {
 //        assertEquals(1.1, item.getQ1().doubleValue(), EPSILON);
 //        assertEquals(1.1, item.getQ3().doubleValue(), EPSILON);
 //    }
-
+//
     private static final double EPSILON = 0.000000001;
-
+//
 //    /**
 //     * Tests the Q1 calculation.
 //     */
@@ -160,8 +160,8 @@ public class BoxAndWhiskerCalculatorTest {
 //        assertEquals(4.0, item.getMaxRegularValue().doubleValue(), EPSILON);
 //    }
 
-    //KItest
-
+//    //KItest
+//
 //    @Test
 //    public void testCalculateBoxAndWhiskerStatistics_SingleElementThree() {
 //        // Test: Method should correctly calculate statistics for a list with one element

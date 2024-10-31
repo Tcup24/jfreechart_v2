@@ -41,7 +41,6 @@ import org.jfree.chart.date.MonthConstants;
 import org.jfree.chart.internal.CloneUtils;
 import org.jfree.data.general.SeriesChangeEvent;
 import org.jfree.data.general.SeriesChangeListener;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
