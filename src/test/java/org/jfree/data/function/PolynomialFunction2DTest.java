@@ -136,150 +136,150 @@ public class PolynomialFunction2DTest {
 
     //KItest
 
-//    @Test
-//    public void testConstructor_initializationAndExceptionThree() {
-//        // Test korrekte Initialisierung
-//        double[] coefficients = {1.0, 2.0, 3.0};
-//        PolynomialFunction2D poly = new PolynomialFunction2D(coefficients);
-//        assertArrayEquals(coefficients, poly.getCoefficients(), 0.001);
-//
-//        // Test Ausnahme für null Eingaben
-//        try {
-//            new PolynomialFunction2D(null);
-//            fail("IllegalArgumentException expected");
-//        } catch (IllegalArgumentException e) {
-//            assertEquals("Null 'coefficients' argument.", e.getMessage());
-//        }
-//    }
-//
-//    @Test
-//    public void testGetCoefficients_returnValuesAndIsolationTwo() {
-//        double[] coefficients = {1.0, 2.0, 3.0};
-//        PolynomialFunction2D poly = new PolynomialFunction2D(coefficients);
-//
-//        double[] returnedCoeffs = poly.getCoefficients();
-//        assertArrayEquals(coefficients, returnedCoeffs, 0.001);
-//
-//        // Test Isolation
-//        returnedCoeffs[0] = 99.0;
-//        assertArrayEquals(coefficients, poly.getCoefficients(), 0.001);
-//    }
-//
-//    @Test
-//    public void testGetOrder_correctOrderTwo() {
-//        double[] coefficients = {1.0, 2.0, 3.0};
-//        PolynomialFunction2D poly = new PolynomialFunction2D(coefficients);
-//        assertEquals(2, poly.getOrder());
-//    }
-//
-//    @Test
-//    public void testEquals_correctEqualityTwo() {
-//        double[] coefficients1 = {1.0, 2.0, 3.0};
-//        double[] coefficients2 = {1.0, 2.0, 3.0};
-//        double[] coefficients3 = {1.0, 2.0};
-//
-//        PolynomialFunction2D poly1 = new PolynomialFunction2D(coefficients1);
-//        PolynomialFunction2D poly2 = new PolynomialFunction2D(coefficients2);
-//        PolynomialFunction2D poly3 = new PolynomialFunction2D(coefficients3);
-//
-//        assertTrue(poly1.equals(poly2));
-//        assertFalse(poly1.equals(poly3));
-//    }
-//
-//    @Test
-//    public void testSerialization_correctSerializationTwo() throws IOException, ClassNotFoundException {
-//        double[] coefficients = {1.0, 2.0, 3.0};
-//        PolynomialFunction2D poly = new PolynomialFunction2D(coefficients);
-//
-//        // Serialisieren
-//        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-//        ObjectOutputStream out = new ObjectOutputStream(byteOut);
-//        out.writeObject(poly);
-//        out.close();
-//
-//        // Deserialisieren
-//        ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
-//        ObjectInputStream in = new ObjectInputStream(byteIn);
-//        PolynomialFunction2D deserializedPoly = (PolynomialFunction2D) in.readObject();
-//        in.close();
-//
-//        assertEquals(poly, deserializedPoly);
-//    }
-//
-//    @Test
-//    public void testHashCode_equalObjectsEqualHashCodesTwo() {
-//        double[] coefficients1 = {1.0, 2.0, 3.0};
-//        double[] coefficients2 = {1.0, 2.0, 3.0};
-//
-//        PolynomialFunction2D poly1 = new PolynomialFunction2D(coefficients1);
-//        PolynomialFunction2D poly2 = new PolynomialFunction2D(coefficients2);
-//
-//        assertEquals(poly1.hashCode(), poly2.hashCode());
-//    }
+    @Test
+    public void testConstructor_initializationAndExceptionThree() {
+        // Test korrekte Initialisierung
+        double[] coefficients = {1.0, 2.0, 3.0};
+        PolynomialFunction2D poly = new PolynomialFunction2D(coefficients);
+        assertArrayEquals(coefficients, poly.getCoefficients(), 0.001);
+
+        // Test Ausnahme für null Eingaben
+        try {
+            new PolynomialFunction2D(null);
+            fail("IllegalArgumentException expected");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Null 'coefficients' argument.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testGetCoefficients_returnValuesAndIsolationTwo() {
+        double[] coefficients = {1.0, 2.0, 3.0};
+        PolynomialFunction2D poly = new PolynomialFunction2D(coefficients);
+
+        double[] returnedCoeffs = poly.getCoefficients();
+        assertArrayEquals(coefficients, returnedCoeffs, 0.001);
+
+        // Test Isolation
+        returnedCoeffs[0] = 99.0;
+        assertArrayEquals(coefficients, poly.getCoefficients(), 0.001);
+    }
+
+    @Test
+    public void testGetOrder_correctOrderTwo() {
+        double[] coefficients = {1.0, 2.0, 3.0};
+        PolynomialFunction2D poly = new PolynomialFunction2D(coefficients);
+        assertEquals(2, poly.getOrder());
+    }
+
+    @Test
+    public void testEquals_correctEqualityTwo() {
+        double[] coefficients1 = {1.0, 2.0, 3.0};
+        double[] coefficients2 = {1.0, 2.0, 3.0};
+        double[] coefficients3 = {1.0, 2.0};
+
+        PolynomialFunction2D poly1 = new PolynomialFunction2D(coefficients1);
+        PolynomialFunction2D poly2 = new PolynomialFunction2D(coefficients2);
+        PolynomialFunction2D poly3 = new PolynomialFunction2D(coefficients3);
+
+        assertTrue(poly1.equals(poly2));
+        assertFalse(poly1.equals(poly3));
+    }
+
+    @Test
+    public void testSerialization_correctSerializationTwo() throws IOException, ClassNotFoundException {
+        double[] coefficients = {1.0, 2.0, 3.0};
+        PolynomialFunction2D poly = new PolynomialFunction2D(coefficients);
+
+        // Serialisieren
+        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+        ObjectOutputStream out = new ObjectOutputStream(byteOut);
+        out.writeObject(poly);
+        out.close();
+
+        // Deserialisieren
+        ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+        ObjectInputStream in = new ObjectInputStream(byteIn);
+        PolynomialFunction2D deserializedPoly = (PolynomialFunction2D) in.readObject();
+        in.close();
+
+        assertEquals(poly, deserializedPoly);
+    }
+
+    @Test
+    public void testHashCode_equalObjectsEqualHashCodesTwo() {
+        double[] coefficients1 = {1.0, 2.0, 3.0};
+        double[] coefficients2 = {1.0, 2.0, 3.0};
+
+        PolynomialFunction2D poly1 = new PolynomialFunction2D(coefficients1);
+        PolynomialFunction2D poly2 = new PolynomialFunction2D(coefficients2);
+
+        assertEquals(poly1.hashCode(), poly2.hashCode());
+    }
 
     //Mini
-    @Test
-    public void testConstructorValidInputTwoMini() {
-        double[] coefficients = {1.0, 2.0, 3.0};
-        PolynomialFunction2D function = new PolynomialFunction2D(coefficients);
-        Assertions.assertArrayEquals(coefficients, function.getCoefficients());
-    }
-
-    @Test
-    public void testConstructorNullInputTwoMini() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new PolynomialFunction2D(null);
-        });
-    }
-    @Test
-    public void testGetCoefficientsTwoMini() {
-        double[] coefficients = {1.0, 2.0, 3.0};
-        PolynomialFunction2D function = new PolynomialFunction2D(coefficients);
-        double[] returnedCoefficients = function.getCoefficients();
-
-        Assertions.assertArrayEquals(coefficients, returnedCoefficients);
-
-        // Änderungen am zurückgegebenen Array haben keine Auswirkungen auf die interne Speicherung
-        returnedCoefficients[0] = 99.0;
-        Assertions.assertNotEquals(99.0, function.getCoefficients()[0]);
-    }
-    @Test
-    public void testGetOrderTwoMini() {
-        double[] coefficients = {1.0, 2.0, 3.0};
-        PolynomialFunction2D function = new PolynomialFunction2D(coefficients);
-        Assertions.assertEquals(2, function.getOrder()); // Grad = Anzahl der Koeffizienten - 1
-    }
-    @Test
-    public void testEqualsTwoMini() {
-        double[] coefficients1 = {1.0, 2.0, 3.0};
-        double[] coefficients2 = {1.0, 2.0, 3.0};
-        double[] coefficients3 = {1.0, 2.0, 4.0};
-
-        PolynomialFunction2D function1 = new PolynomialFunction2D(coefficients1);
-        PolynomialFunction2D function2 = new PolynomialFunction2D(coefficients2);
-        PolynomialFunction2D function3 = new PolynomialFunction2D(coefficients3);
-
-        Assertions.assertTrue(function1.equals(function2));
-        Assertions.assertFalse(function1.equals(function3));
-    }
-    @Test
-    public void testSerializationTwoMini() {
-        double[] coefficients = {1.0, 2.0, 3.0};
-        PolynomialFunction2D originalFunction = new PolynomialFunction2D(coefficients);
-        PolynomialFunction2D deserializedFunction = TestUtils.serialised(originalFunction);
-
-        Assertions.assertEquals(originalFunction, deserializedFunction);
-    }
-    @Test
-    public void testHashCodeTwoMini() {
-        double[] coefficients1 = {1.0, 2.0, 3.0};
-        double[] coefficients2 = {1.0, 2.0, 3.0};
-
-        PolynomialFunction2D function1 = new PolynomialFunction2D(coefficients1);
-        PolynomialFunction2D function2 = new PolynomialFunction2D(coefficients2);
-
-        Assertions.assertEquals(function1.hashCode(), function2.hashCode());
-    }
+//    @Test
+//    public void testConstructorValidInputTwoMini() {
+//        double[] coefficients = {1.0, 2.0, 3.0};
+//        PolynomialFunction2D function = new PolynomialFunction2D(coefficients);
+//        Assertions.assertArrayEquals(coefficients, function.getCoefficients());
+//    }
+//
+//    @Test
+//    public void testConstructorNullInputTwoMini() {
+//        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+//            new PolynomialFunction2D(null);
+//        });
+//    }
+//    @Test
+//    public void testGetCoefficientsTwoMini() {
+//        double[] coefficients = {1.0, 2.0, 3.0};
+//        PolynomialFunction2D function = new PolynomialFunction2D(coefficients);
+//        double[] returnedCoefficients = function.getCoefficients();
+//
+//        Assertions.assertArrayEquals(coefficients, returnedCoefficients);
+//
+//        // Änderungen am zurückgegebenen Array haben keine Auswirkungen auf die interne Speicherung
+//        returnedCoefficients[0] = 99.0;
+//        Assertions.assertNotEquals(99.0, function.getCoefficients()[0]);
+//    }
+//    @Test
+//    public void testGetOrderTwoMini() {
+//        double[] coefficients = {1.0, 2.0, 3.0};
+//        PolynomialFunction2D function = new PolynomialFunction2D(coefficients);
+//        Assertions.assertEquals(2, function.getOrder()); // Grad = Anzahl der Koeffizienten - 1
+//    }
+//    @Test
+//    public void testEqualsTwoMini() {
+//        double[] coefficients1 = {1.0, 2.0, 3.0};
+//        double[] coefficients2 = {1.0, 2.0, 3.0};
+//        double[] coefficients3 = {1.0, 2.0, 4.0};
+//
+//        PolynomialFunction2D function1 = new PolynomialFunction2D(coefficients1);
+//        PolynomialFunction2D function2 = new PolynomialFunction2D(coefficients2);
+//        PolynomialFunction2D function3 = new PolynomialFunction2D(coefficients3);
+//
+//        Assertions.assertTrue(function1.equals(function2));
+//        Assertions.assertFalse(function1.equals(function3));
+//    }
+//    @Test
+//    public void testSerializationTwoMini() {
+//        double[] coefficients = {1.0, 2.0, 3.0};
+//        PolynomialFunction2D originalFunction = new PolynomialFunction2D(coefficients);
+//        PolynomialFunction2D deserializedFunction = TestUtils.serialised(originalFunction);
+//
+//        Assertions.assertEquals(originalFunction, deserializedFunction);
+//    }
+//    @Test
+//    public void testHashCodeTwoMini() {
+//        double[] coefficients1 = {1.0, 2.0, 3.0};
+//        double[] coefficients2 = {1.0, 2.0, 3.0};
+//
+//        PolynomialFunction2D function1 = new PolynomialFunction2D(coefficients1);
+//        PolynomialFunction2D function2 = new PolynomialFunction2D(coefficients2);
+//
+//        Assertions.assertEquals(function1.hashCode(), function2.hashCode());
+//    }
 
 
 }

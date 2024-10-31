@@ -306,90 +306,90 @@ public class TimePeriodValuesTest {
     public void setUp() {
         timePeriodValues = new TimePeriodValues<>("Test Series");
     }
-//
-//    @Test
-//    public void testCloneFunctionality() throws CloneNotSupportedException {
-//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-//        TimePeriodValues<?> clone = (TimePeriodValues<?>) timePeriodValues.clone();
-//        clone.update(0, 200);
-//        assertNotEquals(timePeriodValues.getValue(0), clone.getValue(0));
-//    }
-//
-//    @Test
-//    public void testAddValueTwo() {
-//        Day day = new Day(1, 1, 2022);
-//        TimePeriodValue tpv = new TimePeriodValue(day, 100);
-//        timePeriodValues.add(tpv);
-//        assertEquals(1, timePeriodValues.getItemCount());
-//        assertEquals(tpv, timePeriodValues.getDataItem(0));
-//    }
-//
-//    @Test
-//    public void testSerializationTwo() throws IOException, ClassNotFoundException {
-//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-//        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//        ObjectOutputStream out = new ObjectOutputStream(bos);
-//        out.writeObject(timePeriodValues);
-//
-//        ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-//        ObjectInputStream in = new ObjectInputStream(bis);
-//        TimePeriodValues<?> deserialized = (TimePeriodValues<?>) in.readObject();
-//
-//        assertEquals(timePeriodValues, deserialized);
-//    }
-//
-//    @Test
-//    public void testEqualsTwo() {
-//        TimePeriodValues another = new TimePeriodValues<>("Test Series");
-//        assertEquals(timePeriodValues, another);
-//
-//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-//        another.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-//        assertEquals(timePeriodValues, another);
-//
-//        another.add(new TimePeriodValue(new Day(2, 1, 2022), 200));
-//        assertNotEquals(timePeriodValues, another);
-//    }
-//
-//    @Test
-//    public void testDeleteValuesTwo() {
-//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-//        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 200));
-//        timePeriodValues.delete(0, 0);
-//        assertEquals(1, timePeriodValues.getItemCount());
-//    }
-//
-//    @Test
-//    public void testSeriesChangeListenerTwo() {
-//        final boolean[] flag = {false};
-//        timePeriodValues.addChangeListener(event -> flag[0] = true);
-//
-//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
-//        assertTrue(flag[0]);
-//    }
-//
-//    @Test
-//    public void testMinMaxStartIndexTwo() {
-//        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 100));
-//        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 200));
-//        assertEquals(1, timePeriodValues.getMinStartIndex());
-//        assertEquals(0, timePeriodValues.getMaxStartIndex());
-//    }
-//
-//    @Test
-//    public void testMinMaxMiddleIndexTwo() {
-//        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 100));
-//        timePeriodValues.add(new TimePeriodValue(new Day(1, 2, 2022), 200));
-//        assertEquals(0, timePeriodValues.getMinMiddleIndex());
-//        assertEquals(1, timePeriodValues.getMaxMiddleIndex());
-//    }
-//
-//    @Test
-//    public void testInvalidInputsTwo() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            timePeriodValues.add(null);
-//        });
-//    }
+
+    @Test
+    public void testCloneFunctionality() throws CloneNotSupportedException {
+        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+        TimePeriodValues<?> clone = (TimePeriodValues<?>) timePeriodValues.clone();
+        clone.update(0, 200);
+        assertNotEquals(timePeriodValues.getValue(0), clone.getValue(0));
+    }
+
+    @Test
+    public void testAddValueTwo() {
+        Day day = new Day(1, 1, 2022);
+        TimePeriodValue tpv = new TimePeriodValue(day, 100);
+        timePeriodValues.add(tpv);
+        assertEquals(1, timePeriodValues.getItemCount());
+        assertEquals(tpv, timePeriodValues.getDataItem(0));
+    }
+
+    @Test
+    public void testSerializationTwo() throws IOException, ClassNotFoundException {
+        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream out = new ObjectOutputStream(bos);
+        out.writeObject(timePeriodValues);
+
+        ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+        ObjectInputStream in = new ObjectInputStream(bis);
+        TimePeriodValues<?> deserialized = (TimePeriodValues<?>) in.readObject();
+
+        assertEquals(timePeriodValues, deserialized);
+    }
+
+    @Test
+    public void testEqualsTwo() {
+        TimePeriodValues another = new TimePeriodValues<>("Test Series");
+        assertEquals(timePeriodValues, another);
+
+        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+        another.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+        assertEquals(timePeriodValues, another);
+
+        another.add(new TimePeriodValue(new Day(2, 1, 2022), 200));
+        assertNotEquals(timePeriodValues, another);
+    }
+
+    @Test
+    public void testDeleteValuesTwo() {
+        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 200));
+        timePeriodValues.delete(0, 0);
+        assertEquals(1, timePeriodValues.getItemCount());
+    }
+
+    @Test
+    public void testSeriesChangeListenerTwo() {
+        final boolean[] flag = {false};
+        timePeriodValues.addChangeListener(event -> flag[0] = true);
+
+        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 100));
+        assertTrue(flag[0]);
+    }
+
+    @Test
+    public void testMinMaxStartIndexTwo() {
+        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 100));
+        timePeriodValues.add(new TimePeriodValue(new Day(1, 1, 2022), 200));
+        assertEquals(1, timePeriodValues.getMinStartIndex());
+        assertEquals(0, timePeriodValues.getMaxStartIndex());
+    }
+
+    @Test
+    public void testMinMaxMiddleIndexTwo() {
+        timePeriodValues.add(new TimePeriodValue(new Day(2, 1, 2022), 100));
+        timePeriodValues.add(new TimePeriodValue(new Day(1, 2, 2022), 200));
+        assertEquals(0, timePeriodValues.getMinMiddleIndex());
+        assertEquals(1, timePeriodValues.getMaxMiddleIndex());
+    }
+
+    @Test
+    public void testInvalidInputsTwo() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            timePeriodValues.add(null);
+        });
+    }
 
 
 
@@ -397,121 +397,121 @@ public class TimePeriodValuesTest {
 
     //Versuch 3
     // Test zum Klonen der Zeitreihen-Datenstruktur
-    @Test
-    public void testCloneMini() throws CloneNotSupportedException {
-        TimePeriodValue originalValue = new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10);
-        timePeriodValues.add(originalValue);
-
-        TimePeriodValues<String> clonedSeries = (TimePeriodValues<String>) timePeriodValues.clone();
-
-        // Ändern Sie den geklonten Wert
-        clonedSeries.update(0, 20);
-
-        // Überprüfen Sie, ob das Original unverändert bleibt
-        assertNotEquals(originalValue.getValue(), clonedSeries.getValue(0));
-        assertEquals(originalValue.getValue(), timePeriodValues.getValue(0));
-    }
-
-
-    // Test zur Serialisierung der Zeitreihen-Datenstruktur
-    @Test
-    public void testSerializationMini() throws Exception {
-        timePeriodValues.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10));
-
-        // Serialisieren
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(baos);
-        oos.writeObject(timePeriodValues);
-        oos.flush();
-        oos.close();
-
-        // Deserialisieren
-        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-        ObjectInputStream ois = new ObjectInputStream(bais);
-        TimePeriodValues<String> deserializedSeries = (TimePeriodValues<String>) ois.readObject();
-
-        assertEquals(timePeriodValues, deserializedSeries);
-    }
-
-    // Test zur Prüfung der Gleichheit von zwei Zeitreihen-Datenstrukturen
-    @Test
-    public void testEqualsMini() {
-        TimePeriodValues<String> anotherSeries = new TimePeriodValues<>("Test Series");
-        anotherSeries.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10));
-        timePeriodValues.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10));
-
-        assertEquals(timePeriodValues, anotherSeries);
-
-        // Verschiedene Werte hinzufügen
-        anotherSeries.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 20));
-        assertNotEquals(timePeriodValues, anotherSeries);
-    }
-
-    // Test zum Löschen von Werten aus der Zeitreihen-Datenstruktur
-    @Test
-    public void testDeleteValuesMini() {
-        timePeriodValues.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10));
-        timePeriodValues.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 20));
-
-        assertEquals(2, timePeriodValues.getItemCount());
-
-        timePeriodValues.delete(0, 1);
-
-        assertEquals(0, timePeriodValues.getItemCount());
-    }
-
-    // Test, um sicherzustellen, dass beim Hinzufügen von Elementen ein Ereignis ausgelöst wird
-    @Test
-    public void testListenerTriggeredOnAddMini() {
-        final boolean[] eventTriggered = {false};
-
-        SeriesChangeListener listener = event -> eventTriggered[0] = true;
-        timePeriodValues.addChangeListener(listener); // Ändere die Methode hier
-
-        timePeriodValues.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10));
-
-        assertTrue(eventTriggered[0]);
-    }
-
-    // Test zum Abrufen des niedrigsten und höchsten Startindex
-    @Test
-    public void testMinMaxStartIndexMini() {
-        TimePeriod period1 = new SimpleTimePeriod(new Date(System.currentTimeMillis() - 10000), new Date());
-        TimePeriod period2 = new SimpleTimePeriod(new Date(), new Date(System.currentTimeMillis() + 10000));
-
-        timePeriodValues.add(new TimePeriodValue(period1, 10));
-        timePeriodValues.add(new TimePeriodValue(period2, 20));
-
-        assertEquals(0, timePeriodValues.getMinStartIndex());
-        assertEquals(1, timePeriodValues.getMaxStartIndex());
-    }
-
-    // Test zum Abrufen des mittleren Indexes
-    @Test
-    public void testMiddleIndexMini() {
-        TimePeriod period1 = new SimpleTimePeriod(new Date(System.currentTimeMillis() - 10000), new Date());
-        TimePeriod period2 = new SimpleTimePeriod(new Date(), new Date(System.currentTimeMillis() + 10000));
-
-        timePeriodValues.add(new TimePeriodValue(period1, 10));
-        timePeriodValues.add(new TimePeriodValue(period2, 20));
-
-        assertEquals(0, timePeriodValues.getMinMiddleIndex());
-        assertEquals(1, timePeriodValues.getMaxMiddleIndex());
-    }
-
-    @Test
-    public void testInvalidInputThrowsException() {
-        // Erwarte, dass IllegalArgumentException bei null geworfen wird
-        assertThrows(IllegalArgumentException.class, () -> timePeriodValues.add(null));
-    }
-
-    @Test
-    public void testAddValueMini() {
-        TimePeriod period = new SimpleTimePeriod(new Date(), new Date());
-        timePeriodValues.add(period, 10.0); // Fügen Sie hier 10.0 hinzu, um mit Double übereinzustimmen
-
-        assertEquals(1, timePeriodValues.getItemCount());
-        assertEquals(10.0, timePeriodValues.getValue(0)); // Ändern Sie auch dies auf 10.0
-    }
+//    @Test
+//    public void testCloneMini() throws CloneNotSupportedException {
+//        TimePeriodValue originalValue = new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10);
+//        timePeriodValues.add(originalValue);
+//
+//        TimePeriodValues<String> clonedSeries = (TimePeriodValues<String>) timePeriodValues.clone();
+//
+//        // Ändern Sie den geklonten Wert
+//        clonedSeries.update(0, 20);
+//
+//        // Überprüfen Sie, ob das Original unverändert bleibt
+//        assertNotEquals(originalValue.getValue(), clonedSeries.getValue(0));
+//        assertEquals(originalValue.getValue(), timePeriodValues.getValue(0));
+//    }
+//
+//
+//    // Test zur Serialisierung der Zeitreihen-Datenstruktur
+//    @Test
+//    public void testSerializationMini() throws Exception {
+//        timePeriodValues.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10));
+//
+//        // Serialisieren
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        ObjectOutputStream oos = new ObjectOutputStream(baos);
+//        oos.writeObject(timePeriodValues);
+//        oos.flush();
+//        oos.close();
+//
+//        // Deserialisieren
+//        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+//        ObjectInputStream ois = new ObjectInputStream(bais);
+//        TimePeriodValues<String> deserializedSeries = (TimePeriodValues<String>) ois.readObject();
+//
+//        assertEquals(timePeriodValues, deserializedSeries);
+//    }
+//
+//    // Test zur Prüfung der Gleichheit von zwei Zeitreihen-Datenstrukturen
+//    @Test
+//    public void testEqualsMini() {
+//        TimePeriodValues<String> anotherSeries = new TimePeriodValues<>("Test Series");
+//        anotherSeries.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10));
+//        timePeriodValues.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10));
+//
+//        assertEquals(timePeriodValues, anotherSeries);
+//
+//        // Verschiedene Werte hinzufügen
+//        anotherSeries.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 20));
+//        assertNotEquals(timePeriodValues, anotherSeries);
+//    }
+//
+//    // Test zum Löschen von Werten aus der Zeitreihen-Datenstruktur
+//    @Test
+//    public void testDeleteValuesMini() {
+//        timePeriodValues.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10));
+//        timePeriodValues.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 20));
+//
+//        assertEquals(2, timePeriodValues.getItemCount());
+//
+//        timePeriodValues.delete(0, 1);
+//
+//        assertEquals(0, timePeriodValues.getItemCount());
+//    }
+//
+//    // Test, um sicherzustellen, dass beim Hinzufügen von Elementen ein Ereignis ausgelöst wird
+//    @Test
+//    public void testListenerTriggeredOnAddMini() {
+//        final boolean[] eventTriggered = {false};
+//
+//        SeriesChangeListener listener = event -> eventTriggered[0] = true;
+//        timePeriodValues.addChangeListener(listener); // Ändere die Methode hier
+//
+//        timePeriodValues.add(new TimePeriodValue(new SimpleTimePeriod(new Date(), new Date()), 10));
+//
+//        assertTrue(eventTriggered[0]);
+//    }
+//
+//    // Test zum Abrufen des niedrigsten und höchsten Startindex
+//    @Test
+//    public void testMinMaxStartIndexMini() {
+//        TimePeriod period1 = new SimpleTimePeriod(new Date(System.currentTimeMillis() - 10000), new Date());
+//        TimePeriod period2 = new SimpleTimePeriod(new Date(), new Date(System.currentTimeMillis() + 10000));
+//
+//        timePeriodValues.add(new TimePeriodValue(period1, 10));
+//        timePeriodValues.add(new TimePeriodValue(period2, 20));
+//
+//        assertEquals(0, timePeriodValues.getMinStartIndex());
+//        assertEquals(1, timePeriodValues.getMaxStartIndex());
+//    }
+//
+//    // Test zum Abrufen des mittleren Indexes
+//    @Test
+//    public void testMiddleIndexMini() {
+//        TimePeriod period1 = new SimpleTimePeriod(new Date(System.currentTimeMillis() - 10000), new Date());
+//        TimePeriod period2 = new SimpleTimePeriod(new Date(), new Date(System.currentTimeMillis() + 10000));
+//
+//        timePeriodValues.add(new TimePeriodValue(period1, 10));
+//        timePeriodValues.add(new TimePeriodValue(period2, 20));
+//
+//        assertEquals(0, timePeriodValues.getMinMiddleIndex());
+//        assertEquals(1, timePeriodValues.getMaxMiddleIndex());
+//    }
+//
+//    @Test
+//    public void testInvalidInputThrowsException() {
+//        // Erwarte, dass IllegalArgumentException bei null geworfen wird
+//        assertThrows(IllegalArgumentException.class, () -> timePeriodValues.add(null));
+//    }
+//
+//    @Test
+//    public void testAddValueMini() {
+//        TimePeriod period = new SimpleTimePeriod(new Date(), new Date());
+//        timePeriodValues.add(period, 10.0); // Fügen Sie hier 10.0 hinzu, um mit Double übereinzustimmen
+//
+//        assertEquals(1, timePeriodValues.getItemCount());
+//        assertEquals(10.0, timePeriodValues.getValue(0)); // Ändern Sie auch dies auf 10.0
+//    }
 
 }

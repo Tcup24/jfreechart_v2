@@ -182,156 +182,156 @@ public class DefaultPieDatasetTest implements DatasetChangeListener {
     public void setUp() {
         dataset = new DefaultPieDataset<>();
     }
-//
-//    @Test
-//    public void testClearDoesNotTriggerEventWhenEmptyTwo() {
-//        // Assuming there is a method to check dataset change event count
-//        dataset.clear();
-//        // Verify that no event is triggered; placeholder method assumed.
-//        // assertEquals(0, dataset.getChangeEventCount());
-//    }
-//
-//    @Test
-//    public void testClearTriggersEventWhenNotEmptyTwo() {
-//        dataset.setValue("A", 1);
-//        // Assuming there is a method to check dataset change event count
-//        dataset.clear();
-//        // Verify that an event is triggered; placeholder method assumed.
-//        // assertEquals(1, dataset.getChangeEventCount());
-//    }
-//
-//    @Test
-//    public void testGetKeyMethodTwo() {
-//        dataset.setValue("A", 15);
-//        dataset.setValue("B", 30);
-//
-//        assertEquals("A", dataset.getKey(0));
-//        assertEquals("B", dataset.getKey(1));
-//        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(2));
-//    }
-//
-//    @Test
-//    public void testGetIndexMethodTwo() {
-//        dataset.setValue("A", 15);
-//        dataset.setValue("B", 30);
-//
-//        assertEquals(0, dataset.getIndex("A"));
-//        assertEquals(1, dataset.getIndex("B"));
-//        assertThrows(IllegalArgumentException.class, () -> dataset.getIndex(null));
-//        assertEquals(-1, dataset.getIndex("C"));
-//    }
-//
-//    @Test
-//    public void testCloneMethodTwo() throws CloneNotSupportedException {
-//        dataset.setValue("A", 15);
-//        DefaultPieDataset<String> clone = (DefaultPieDataset<String>) dataset.clone();
-//
-//        assertEquals(dataset, clone);
-//        assertNotSame(dataset, clone);
-//    }
-//
-//    @Test
-//    public void testSerializationDeserializationTwo() {
-//        dataset.setValue("A", 15);
-//        DefaultPieDataset<String> deserializedDataset = TestUtils.serialised(dataset);
-//
-//        assertEquals(dataset, deserializedDataset);
-//        assertNotSame(dataset, deserializedDataset);
-//    }
-//
-//    @Test
-//    public void testBug212HandlingTwo() {
-//        dataset.setValue("A", 15);
-//        dataset.setValue("B", 30);
-//
-//        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(-1));
-//        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(3));
-//
-//        assertDoesNotThrow(() -> dataset.getKey(0));
-//        assertDoesNotThrow(() -> dataset.getKey(1));
-//    }
+
+    @Test
+    public void testClearDoesNotTriggerEventWhenEmptyTwo() {
+        // Assuming there is a method to check dataset change event count
+        dataset.clear();
+        // Verify that no event is triggered; placeholder method assumed.
+        // assertEquals(0, dataset.getChangeEventCount());
+    }
+
+    @Test
+    public void testClearTriggersEventWhenNotEmptyTwo() {
+        dataset.setValue("A", 1);
+        // Assuming there is a method to check dataset change event count
+        dataset.clear();
+        // Verify that an event is triggered; placeholder method assumed.
+        // assertEquals(1, dataset.getChangeEventCount());
+    }
+
+    @Test
+    public void testGetKeyMethodTwo() {
+        dataset.setValue("A", 15);
+        dataset.setValue("B", 30);
+
+        assertEquals("A", dataset.getKey(0));
+        assertEquals("B", dataset.getKey(1));
+        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(2));
+    }
+
+    @Test
+    public void testGetIndexMethodTwo() {
+        dataset.setValue("A", 15);
+        dataset.setValue("B", 30);
+
+        assertEquals(0, dataset.getIndex("A"));
+        assertEquals(1, dataset.getIndex("B"));
+        assertThrows(IllegalArgumentException.class, () -> dataset.getIndex(null));
+        assertEquals(-1, dataset.getIndex("C"));
+    }
+
+    @Test
+    public void testCloneMethodTwo() throws CloneNotSupportedException {
+        dataset.setValue("A", 15);
+        DefaultPieDataset<String> clone = (DefaultPieDataset<String>) dataset.clone();
+
+        assertEquals(dataset, clone);
+        assertNotSame(dataset, clone);
+    }
+
+    @Test
+    public void testSerializationDeserializationTwo() {
+        dataset.setValue("A", 15);
+        DefaultPieDataset<String> deserializedDataset = TestUtils.serialised(dataset);
+
+        assertEquals(dataset, deserializedDataset);
+        assertNotSame(dataset, deserializedDataset);
+    }
+
+    @Test
+    public void testBug212HandlingTwo() {
+        dataset.setValue("A", 15);
+        dataset.setValue("B", 30);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> dataset.getKey(3));
+
+        assertDoesNotThrow(() -> dataset.getKey(0));
+        assertDoesNotThrow(() -> dataset.getKey(1));
+    }
 
 
     //Mini
-    @Test
-    public void testClearWhenEmptyTwoMini() {
-        dataset.clear();
-        assertEquals(0, dataset.getItemCount());
-    }
-
-    @Test
-    public void testClearWhenNotEmptyTwoMini() {
-        dataset.setValue("Key1", 1);
-        dataset.setValue("Key2", 2);
-        dataset.clear();
-        assertEquals(0, dataset.getItemCount());
-    }
-    @Test
-    public void testGetKeyTwoMini() {
-        dataset.setValue("Key1", 1);
-        dataset.setValue("Key2", 2);
-
-        assertEquals("Key1", dataset.getKey(0));
-        assertEquals("Key2", dataset.getKey(1));
-    }
-
-    @Test
-    public void testGetKeyWithInvalidIndexTwoMini() {
-        try {
-            dataset.getKey(5); // Ein ungültiger Index
-            fail("Expected IndexOutOfBoundsException"); // Dies sollte nicht passieren
-        } catch (IndexOutOfBoundsException e) {
-            // Erwartete Ausnahme wurde geworfen
-        }
-    }
-    @Test
-    public void testGetIndexTwoMini() {
-        dataset.setValue("Key1", 1);
-        dataset.setValue("Key2", 2);
-
-        assertEquals(0, dataset.getIndex("Key1"));
-        assertEquals(1, dataset.getIndex("Key2"));
-        assertEquals(-1, dataset.getIndex("InvalidKey")); // Ungültiger Schlüssel
-    }
-
-    @Test
-    public void testGetIndexWithNullTwoMini() {
-        try {
-            dataset.getIndex(null); // Erwartete Ausnahme
-            fail("Expected IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-            // Erwartete Ausnahme wurde geworfen
-        }
-    }
-    @Test
-    public void testCloneTwoMini() throws CloneNotSupportedException {
-        dataset.setValue("Key1", 1);
-        DefaultPieDataset<String> clonedDataset = (DefaultPieDataset<String>) dataset.clone();
-
-        assertNotSame(dataset, clonedDataset); // Überprüfen, dass es sich nicht um dasselbe Objekt handelt
-        assertEquals(dataset, clonedDataset); // Überprüfen, dass sie gleichwertig sind
-    }
-    @Test
-    public void testSerializationTwoMini() {
-        dataset.setValue("Key1", 1);
-        DefaultPieDataset<String> serializedDataset = TestUtils.serialised(dataset);
-
-        assertEquals(dataset, serializedDataset); // Überprüfen, dass die Objekte gleichwertig sind
-    }
-    @Test
-    public void testInvalidIndexAccessTwoMini() {
-        try {
-            dataset.getKey(0); // Sollte eine Ausnahme auslösen, da das Dataset leer ist
-            fail("Expected IndexOutOfBoundsException");
-        } catch (IndexOutOfBoundsException e) {
-            // Erwartete Ausnahme wurde geworfen
-        }
-    }
-
-    @Test
-    public void testValidIndexAccessTwoMini() {
-        dataset.setValue("Key1", 1);
-        assertEquals("Key1", dataset.getKey(0)); // Sollte erfolgreich sein
-    }
+//    @Test
+//    public void testClearWhenEmptyTwoMini() {
+//        dataset.clear();
+//        assertEquals(0, dataset.getItemCount());
+//    }
+//
+//    @Test
+//    public void testClearWhenNotEmptyTwoMini() {
+//        dataset.setValue("Key1", 1);
+//        dataset.setValue("Key2", 2);
+//        dataset.clear();
+//        assertEquals(0, dataset.getItemCount());
+//    }
+//    @Test
+//    public void testGetKeyTwoMini() {
+//        dataset.setValue("Key1", 1);
+//        dataset.setValue("Key2", 2);
+//
+//        assertEquals("Key1", dataset.getKey(0));
+//        assertEquals("Key2", dataset.getKey(1));
+//    }
+//
+//    @Test
+//    public void testGetKeyWithInvalidIndexTwoMini() {
+//        try {
+//            dataset.getKey(5); // Ein ungültiger Index
+//            fail("Expected IndexOutOfBoundsException"); // Dies sollte nicht passieren
+//        } catch (IndexOutOfBoundsException e) {
+//            // Erwartete Ausnahme wurde geworfen
+//        }
+//    }
+//    @Test
+//    public void testGetIndexTwoMini() {
+//        dataset.setValue("Key1", 1);
+//        dataset.setValue("Key2", 2);
+//
+//        assertEquals(0, dataset.getIndex("Key1"));
+//        assertEquals(1, dataset.getIndex("Key2"));
+//        assertEquals(-1, dataset.getIndex("InvalidKey")); // Ungültiger Schlüssel
+//    }
+//
+//    @Test
+//    public void testGetIndexWithNullTwoMini() {
+//        try {
+//            dataset.getIndex(null); // Erwartete Ausnahme
+//            fail("Expected IllegalArgumentException");
+//        } catch (IllegalArgumentException e) {
+//            // Erwartete Ausnahme wurde geworfen
+//        }
+//    }
+//    @Test
+//    public void testCloneTwoMini() throws CloneNotSupportedException {
+//        dataset.setValue("Key1", 1);
+//        DefaultPieDataset<String> clonedDataset = (DefaultPieDataset<String>) dataset.clone();
+//
+//        assertNotSame(dataset, clonedDataset); // Überprüfen, dass es sich nicht um dasselbe Objekt handelt
+//        assertEquals(dataset, clonedDataset); // Überprüfen, dass sie gleichwertig sind
+//    }
+//    @Test
+//    public void testSerializationTwoMini() {
+//        dataset.setValue("Key1", 1);
+//        DefaultPieDataset<String> serializedDataset = TestUtils.serialised(dataset);
+//
+//        assertEquals(dataset, serializedDataset); // Überprüfen, dass die Objekte gleichwertig sind
+//    }
+//    @Test
+//    public void testInvalidIndexAccessTwoMini() {
+//        try {
+//            dataset.getKey(0); // Sollte eine Ausnahme auslösen, da das Dataset leer ist
+//            fail("Expected IndexOutOfBoundsException");
+//        } catch (IndexOutOfBoundsException e) {
+//            // Erwartete Ausnahme wurde geworfen
+//        }
+//    }
+//
+//    @Test
+//    public void testValidIndexAccessTwoMini() {
+//        dataset.setValue("Key1", 1);
+//        assertEquals("Key1", dataset.getKey(0)); // Sollte erfolgreich sein
+//    }
 
 }

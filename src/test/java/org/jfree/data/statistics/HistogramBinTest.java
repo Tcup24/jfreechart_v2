@@ -87,77 +87,77 @@ public class HistogramBinTest {
 
 
     //KItest
-//    @Test
-//    public void testEqualsTwo() {
-//        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
-//        HistogramBin bin2 = new HistogramBin(0.0, 1.0);
-//
-//        assertTrue(bin1.equals(bin2), "Die Bins sollten gleich sein");
-//
-//        bin1.incrementCount();
-//        assertFalse(bin1.equals(bin2), "Die Bins sollten nicht gleich sein, da die counts unterschiedlich sind");
-//    }
-//
-//    @Test
-//    public void testCloningTwo() throws CloneNotSupportedException {
-//        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
-//        bin1.incrementCount();
-//        HistogramBin bin2 = (HistogramBin) bin1.clone();
-//
-//        assertFalse(bin1 == bin2, "Die geklonten Bins sollten nicht die gleiche Instanz sein");
-//        assertTrue(bin1.equals(bin2), "Die geklonten Bins sollten gleich sein");
-//    }
-//
-//    @Test
-//    public void testSerializationTwo() {
-//        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
-//        bin1.incrementCount();
-//
-//        HistogramBin bin2 = TestUtils.serialised(bin1);
-//
-//        assertFalse(bin1 == bin2, "Die deserialisierten Bins sollten nicht die gleiche Instanz sein");
-//        assertTrue(bin1.equals(bin2), "Die deserialisierten Bins sollten gleich sein");
-//    }
-
-    //Mini
     @Test
-    public void testEqualsTwoMini() {
+    public void testEqualsTwo() {
         HistogramBin bin1 = new HistogramBin(0.0, 1.0);
         HistogramBin bin2 = new HistogramBin(0.0, 1.0);
-        HistogramBin bin3 = new HistogramBin(0.0, 2.0);
 
-        assertTrue(bin1.equals(bin2), "Bins with same boundaries and count should be equal.");
-        assertFalse(bin1.equals(bin3), "Bins with different end boundaries should not be equal.");
-        assertFalse(bin1.equals(null), "A bin should not be equal to null.");
-        assertFalse(bin1.equals(new Object()), "A bin should not be equal to a different object type.");
+        assertTrue(bin1.equals(bin2), "Die Bins sollten gleich sein");
+
+        bin1.incrementCount();
+        assertFalse(bin1.equals(bin2), "Die Bins sollten nicht gleich sein, da die counts unterschiedlich sind");
     }
 
     @Test
-    public void testCloningTwoMini() throws CloneNotSupportedException {
-        HistogramBin original = new HistogramBin(0.0, 5.0);
-        original.incrementCount(); // Increment count to change the state
+    public void testCloningTwo() throws CloneNotSupportedException {
+        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
+        bin1.incrementCount();
+        HistogramBin bin2 = (HistogramBin) bin1.clone();
 
-        HistogramBin cloned = (HistogramBin) original.clone();
-
-        assertNotSame(original, cloned, "Cloned object should not be the same instance.");
-        assertEquals(original, cloned, "Cloned object should be equal to the original.");
-        assertEquals(original.getCount(), cloned.getCount(), "Cloned object should have the same count.");
+        assertFalse(bin1 == bin2, "Die geklonten Bins sollten nicht die gleiche Instanz sein");
+        assertTrue(bin1.equals(bin2), "Die geklonten Bins sollten gleich sein");
     }
 
     @Test
-    public void testSerializationTwoMini() {
-        HistogramBin original = new HistogramBin(1.0, 3.0);
-        original.incrementCount(); // Increment count to change the state
+    public void testSerializationTwo() {
+        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
+        bin1.incrementCount();
 
-        // Serialize and deserialize the original object
-        HistogramBin deserialized = TestUtils.serialised(original);
+        HistogramBin bin2 = TestUtils.serialised(bin1);
 
-        assertNotSame(original, deserialized, "Deserialized object should not be the same instance.");
-        assertEquals(original, deserialized, "Deserialized object should be equal to the original.");
-        assertEquals(original.getCount(), deserialized.getCount(), "Deserialized object should have the same count.");
-        assertEquals(original.getStartBoundary(), deserialized.getStartBoundary(), "Deserialized object should have the same start boundary.");
-        assertEquals(original.getEndBoundary(), deserialized.getEndBoundary(), "Deserialized object should have the same end boundary.");
+        assertFalse(bin1 == bin2, "Die deserialisierten Bins sollten nicht die gleiche Instanz sein");
+        assertTrue(bin1.equals(bin2), "Die deserialisierten Bins sollten gleich sein");
     }
+
+    //Mini
+//    @Test
+//    public void testEqualsTwoMini() {
+//        HistogramBin bin1 = new HistogramBin(0.0, 1.0);
+//        HistogramBin bin2 = new HistogramBin(0.0, 1.0);
+//        HistogramBin bin3 = new HistogramBin(0.0, 2.0);
+//
+//        assertTrue(bin1.equals(bin2), "Bins with same boundaries and count should be equal.");
+//        assertFalse(bin1.equals(bin3), "Bins with different end boundaries should not be equal.");
+//        assertFalse(bin1.equals(null), "A bin should not be equal to null.");
+//        assertFalse(bin1.equals(new Object()), "A bin should not be equal to a different object type.");
+//    }
+//
+//    @Test
+//    public void testCloningTwoMini() throws CloneNotSupportedException {
+//        HistogramBin original = new HistogramBin(0.0, 5.0);
+//        original.incrementCount(); // Increment count to change the state
+//
+//        HistogramBin cloned = (HistogramBin) original.clone();
+//
+//        assertNotSame(original, cloned, "Cloned object should not be the same instance.");
+//        assertEquals(original, cloned, "Cloned object should be equal to the original.");
+//        assertEquals(original.getCount(), cloned.getCount(), "Cloned object should have the same count.");
+//    }
+//
+//    @Test
+//    public void testSerializationTwoMini() {
+//        HistogramBin original = new HistogramBin(1.0, 3.0);
+//        original.incrementCount(); // Increment count to change the state
+//
+//        // Serialize and deserialize the original object
+//        HistogramBin deserialized = TestUtils.serialised(original);
+//
+//        assertNotSame(original, deserialized, "Deserialized object should not be the same instance.");
+//        assertEquals(original, deserialized, "Deserialized object should be equal to the original.");
+//        assertEquals(original.getCount(), deserialized.getCount(), "Deserialized object should have the same count.");
+//        assertEquals(original.getStartBoundary(), deserialized.getStartBoundary(), "Deserialized object should have the same start boundary.");
+//        assertEquals(original.getEndBoundary(), deserialized.getEndBoundary(), "Deserialized object should have the same end boundary.");
+//    }
 
 
 }
